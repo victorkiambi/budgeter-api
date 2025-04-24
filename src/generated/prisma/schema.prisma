@@ -1,0 +1,158 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime      @default(now())
+  accounts     Account[]
+  statements   Statement[]
+  transactions Transaction[]
+  budgets      Budget[]
+
+  @@index([email])
+}
+
+model Account {
+  id           String        @id @default(uuid())
+  userId       String
+  name         String
+  type         AccountType
+  currency     Currency
+  balance      Decimal       @db.Decimal(15, 2)
+  isDefault    Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+  statements   Statement[]
+
+  @@index([userId])
+  @@index([currency])
+}
+
+model Statement {
+  id           String        @id @default(uuid())
+  userId       String
+  accountId    String
+  filename     String
+  fileType     FileType
+  uploadedAt   DateTime      @default(now())
+  processedAt  DateTime?
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account      Account       @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+
+  @@index([userId])
+  @@index([accountId])
+}
+
+model Category {
+  id             String           @id @default(uuid())
+  name           String
+  type           CategoryType     @default(system)
+  keywords       String?
+  transactions   Transaction[]
+  budgetCategory BudgetCategory[]
+
+  @@index([name])
+}
+
+model Transaction {
+  id          String          @id @default(uuid())
+  userId      String
+  accountId   String
+  statementId String?
+  date        DateTime
+  description String          @db.Text
+  amount      Decimal         @db.Decimal(15, 2)
+  type        TransactionType
+  categoryId  String?
+  currency    Currency
+  createdAt   DateTime        @default(now())
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account     Account         @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  statement   Statement?      @relation(fields: [statementId], references: [id], onDelete: SetNull)
+  category    Category?       @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([accountId])
+  @@index([date])
+  @@index([categoryId])
+  @@index([statementId])
+  @@index([currency])
+}
+
+model Budget {
+  id          String           @id @default(uuid())
+  userId      String
+  name        String
+  currency    Currency
+  totalAmount Decimal          @db.Decimal(15, 2)
+  periodStart DateTime
+  periodEnd   DateTime
+  createdAt   DateTime         @default(now())
+  user        User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categories  BudgetCategory[]
+
+  @@index([userId])
+  @@index([periodStart, periodEnd])
+  @@index([currency])
+}
+
+model BudgetCategory {
+  budgetId   String
+  categoryId String
+  amount     Decimal  @db.Decimal(15, 2)
+  budget     Budget   @relation(fields: [budgetId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([budgetId, categoryId])
+}
+
+enum FileType {
+  csv
+  pdf
+}
+
+enum CategoryType {
+  system
+  user
+}
+
+enum TransactionType {
+  income
+  expense
+  transfer
+}
+
+enum AccountType {
+  CHECKING
+  SAVINGS
+  CREDIT_CARD
+  INVESTMENT
+  LOAN
+  WALLET
+}
+
+enum Currency {
+  USD
+  EUR
+  GBP
+  KES
+}
