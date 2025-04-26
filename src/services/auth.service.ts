@@ -1,9 +1,9 @@
 import { RegisterDTO, LoginDTO, AuthResponse, JWTPayload, TokenResponse } from '../types/auth.types';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-import { PrismaClient, User } from '@prisma/client';
 import { randomUUID } from 'crypto';
-import { prisma } from '../lib/prisma';
+import prisma from '../config/database';
+import { type User as PrismaUser } from '../generated/prisma';
 
 class AuthService {
   private readonly JWT_ACCESS_SECRET: string;
@@ -108,7 +108,7 @@ class AuthService {
     }
   }
 
-  private async generateTokens(user: User): Promise<TokenResponse> {
+  private async generateTokens(user: PrismaUser): Promise<TokenResponse> {
     const tokenId = randomUUID();
 
     const accessToken = this.generateAccessToken(user);
@@ -120,7 +120,7 @@ class AuthService {
     };
   }
 
-  private generateAccessToken(user: User): string {
+  private generateAccessToken(user: PrismaUser): string {
     const payload: JWTPayload = {
       userId: user.id,
       email: user.email,
@@ -134,7 +134,7 @@ class AuthService {
     );
   }
 
-  private generateRefreshToken(user: User, tokenId: string): string {
+  private generateRefreshToken(user: PrismaUser, tokenId: string): string {
     const payload: JWTPayload = {
       userId: user.id,
       email: user.email,
