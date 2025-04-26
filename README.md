@@ -1,148 +1,76 @@
+# M-PESA PDF Parser
+
+A specialized parser for extracting transaction data from M-PESA statement PDFs.
+
 ## Features
 
-- **Multi-Currency Support**: Manage accounts and transactions in different currencies (USD, EUR, KES, etc.)
-- **Multiple Account Management**: Create and manage multiple accounts (checking, savings, cash, etc.)
-- **Account Types**: Support for various account types including checking, savings, credit card, and cash accounts
-- **Currency-Specific Budgeting**: Create budgets in different currencies
-- **Inter-Account Transfers**: Track transfers between accounts in different currencies
-- **Smart Transaction Categorization**: Automatic categorization based on transaction descriptions
-- **Comprehensive Reporting**: Track spending patterns across accounts and currencies
-- **Statement Management**: Upload and manage bank statements
-- **User Authentication**: Secure user authentication and authorization
+- Parses M-PESA statements into structured transaction data
+- Handles the tabular format used in M-PESA statements
+- Processes multi-page statements
+- Extracts transaction details including timestamps, amounts, descriptions, and merchants
+- Categorizes transactions as income, expense, or transfer
+- Exports transaction data to CSV for further analysis
 
-## Data Models
+## Installation
 
-### User
-- `id`: Int (Primary Key, Auto-increment)
-- `email`: String (Unique)
-- `passwordHash`: String
-- `name`: String (Optional)
-- `createdAt`: DateTime
-- Relations:
-  - Has many accounts
-  - Has many statements
-  - Has many transactions
-  - Has many budgets
+```
+npm install
+```
 
-### Account
-- `id`: Int (Primary Key, Auto-increment)
-- `userId`: Int (Foreign Key)
-- `name`: String
-- `type`: AccountType (checking, savings, credit, investment, cash, other)
-- `currency`: Currency (USD, EUR, GBP, KES, etc.)
-- `balance`: Decimal(15,2)
-- `isDefault`: Boolean
-- `createdAt`: DateTime
-- `updatedAt`: DateTime
-- Relations:
-  - Belongs to user
-  - Has many transactions
-  - Has many statements
+## Usage
 
-### Transaction
-- `id`: Int (Primary Key, Auto-increment)
-- `userId`: Int (Foreign Key)
-- `accountId`: Int (Foreign Key)
-- `statementId`: Int (Optional, Foreign Key)
-- `date`: DateTime
-- `description`: Text
-- `amount`: Decimal(15,2)
-- `type`: TransactionType (income, expense, transfer)
-- `categoryId`: Int (Optional, Foreign Key)
-- `currency`: Currency
-- `createdAt`: DateTime
-- Relations:
-  - Belongs to user
-  - Belongs to account
-  - Optional belongs to statement
-  - Optional belongs to category
+### From the Command Line
 
-### Category
-- `id`: Int (Primary Key, Auto-increment)
-- `name`: String
-- `type`: CategoryType (system, user)
-- `keywords`: String (Optional)
-- Relations:
-  - Has many transactions
-  - Has many budget categories
+```bash
+npx ts-node src/mpesa-parser.ts path/to/mpesa-statement.pdf [output.csv]
+```
 
-### Budget
-- `id`: Int (Primary Key, Auto-increment)
-- `userId`: Int (Foreign Key)
-- `name`: String
-- `currency`: Currency
-- `totalAmount`: Decimal(15,2)
-- `periodStart`: DateTime
-- `periodEnd`: DateTime
-- `createdAt`: DateTime
-- Relations:
-  - Belongs to user
-  - Has many budget categories
+### In Code
 
-### BudgetCategory
-- Composite Primary Key: (`budgetId`, `categoryId`)
-- `amount`: Decimal(15,2)
-- Relations:
-  - Belongs to budget
-  - Belongs to category
+```typescript
+import { parseMpesaStatement } from './mpesa-parser';
 
-### Statement
-- `id`: Int (Primary Key, Auto-increment)
-- `userId`: Int (Foreign Key)
-- `accountId`: Int (Foreign Key)
-- `filename`: String
-- `fileType`: FileType (csv, pdf)
-- `uploadedAt`: DateTime
-- `processedAt`: DateTime (Optional)
-- Relations:
-  - Belongs to user
-  - Belongs to account
-  - Has many transactions
+async function processStatement() {
+  const pdfPath = 'path/to/mpesa-statement.pdf';
+  const transactions = await parseMpesaStatement(pdfPath);
+  
+  console.log(`Parsed ${transactions.length} transactions`);
+  console.log(transactions[0]); // View the first transaction
+}
 
-## Next Steps
+processStatement();
+```
 
-1. **API Development**:
-   - Set up Express.js/Next.js API routes
-   - Implement RESTful endpoints for all models
-   - Add authentication middleware
-   - Implement input validation
+## Transaction Data Structure
 
-2. **Frontend Development**:
-   - Create user authentication pages (login/signup)
-   - Develop dashboard layout
-   - Build account management interface
-   - Create transaction management views
-   - Implement budget planning interface
-   - Add statement upload and processing
+Each parsed transaction includes:
 
-3. **Security Implementation**:
-   - Set up JWT authentication
-   - Implement password hashing (already using bcrypt)
-   - Add request rate limiting
-   - Implement CORS policies
+- `timestamp`: Date and time of the transaction
+- `amount`: Transaction amount in KES
+- `description`: Full transaction description
+- `reference`: Receipt number (e.g., "TDN9VLQPFB")
+- `status`: Transaction status (e.g., "COMPLETED", "FAILED")
+- `type`: Transaction type ("income", "expense", or "transfer")
+- `merchant`: Extracted merchant name
 
-4. **Testing**:
-   - Write unit tests for API endpoints
-   - Add integration tests for database operations
-   - Create end-to-end tests for critical flows
-   - Set up CI/CD pipeline
+## How It Works
 
-5. **Documentation**:
-   - Document API endpoints
-   - Create user guide
-   - Add developer documentation
-   - Document deployment process
+The parser utilizes the `pdf.js-extract` library to extract text content from M-PESA PDF statements. It then:
 
-6. **Deployment**:
-   - Set up production database
-   - Configure environment variables
-   - Deploy API server
-   - Deploy frontend application
-   - Set up monitoring and logging
+1. Identifies the tabular structure of the statement
+2. Extracts transaction rows based on receipt numbers
+3. Identifies components of each transaction (timestamp, description, amounts)
+4. Post-processes transactions to handle special cases, duplicates, and related entries
+5. Categorizes transactions based on description and amount patterns
 
-7. **Additional Features**:
-   - Implement recurring transactions
-   - Add data export functionality
-   - Create financial reports and analytics
-   - Add multi-language support
-   - Implement notification system 
+## Notes
+
+- The parser has been optimized for M-PESA statement PDFs with the standard format
+- For best results, use statements from the M-PESA website or app
+- The parser works entirely client-side without sending data to external services
+
+## Known Limitations
+
+- Some complex multi-line descriptions might be truncated
+- Transactions with the same receipt number might cause issues
+- Very large PDFs (over 50 pages) might cause performance issues

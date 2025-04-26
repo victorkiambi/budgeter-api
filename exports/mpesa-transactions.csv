@@ -1,0 +1,251 @@
+Date,Time,Reference,Description,Merchant,Type,Amount,Status
+2025-04-23,12:03:14,TDN9VLQPFB," Airtime Purchase ","",transfer,0.00,COMPLETED
+2025-04-23,06:26:42,TDN6U8WJA2," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-04-23,05:11:09,TDN7TZ7G9L," Customer Transfer to 0705***373 - Ian","0705***373",expense,0.00,COMPLETED
+2025-04-22,13:37:53,TDM0RJ8BRS," Customer Transfer to 0769***543 -","0769***543",expense,0.00,COMPLETED
+2025-04-22,07:25:18,TDM8PYTCF8," Customer Transfer to 0769***543 -","0769***543",expense,0.00,COMPLETED
+2025-04-21,10:58:54,TDL5MIYKGZ," Merchant Payment Online to 927569 - AFI","927569",expense,0.00,COMPLETED
+2025-04-21,07:49:34,TDL2LRG0QW," Customer Transfer to 254722***927 -","254722***927",expense,0.00,COMPLETED
+2025-04-21,05:11:30,TDL3L70YCT," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-04-20,07:40:01,TDK0HM966K," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-04-20,03:37:43,TDK7GWYC9J," Customer Transfer to 254722***702 -","254722***702",expense,0.00,COMPLETED
+2025-04-19,13:54:23,TDJ5ES4HZ7," Customer Transfer to 254790***915 -","254790***915",expense,0.00,COMPLETED
+2025-04-19,13:36:30,TDJ8EP0V12," Funds received from 0721***634 - KELVIN","0721***634",income,140.00,COMPLETED
+2025-04-19,07:40:40,TDJ4D65BAO," Merchant Payment Online to 268656 -","268656",expense,0.00,COMPLETED
+2025-04-19,07:39:35,TDJ0D5ZF7U," Merchant Payment Online to 268656 -","268656",expense,0.00,COMPLETED
+2025-04-19,07:32:11,TDJ7D4W0KD," Customer Transfer to 0769***543 -","0769***543",expense,0.00,COMPLETED
+2025-04-19,06:58:11,TDJ2D0049G," Business Payment from 3012557 - YETU","3012557",income,3000.00,COMPLETED
+2025-04-19,04:34:50,TDJ3CHWHKP," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-04-18,14:47:06,TDI8AGJ4V8," Customer Transfer to 254718***994 -","254718***994",expense,0.00,COMPLETED
+2025-04-18,14:07:35,TDI3A945OV," Customer Transfer to 0798***603 - erick","0798***603",expense,0.00,COMPLETED
+2025-04-18,13:34:46,TDI4A38M24," Merchant Payment Online to 927569 - AFI","927569",expense,0.00,COMPLETED
+2025-04-18,11:38:16,TDI89KQSFU," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-18,11:38:15,TDI49KQF2M," M-Shwari Loan Request ","",transfer,0.00,COMPLETED
+2025-04-18,11:38:15,TDI89KQKAS," M-Shwari Loan Disburse ","",transfer,0.00,COMPLETED
+2025-04-18,06:15:16,TDI7878OM3," OverDraft of Credit Party ","",expense,957.27,COMPLETED
+2025-04-17,17:55:15,TDH36YKXKF," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-17,17:55:14,TDH06YKUPA," Business Payment from 329299 -","329299",income,7900.00,COMPLETED
+2025-04-17,17:53:33,TDH86Y9G12," OverDraft of Credit Party ","",expense,1633.00,COMPLETED
+2025-04-17,15:41:23,TDH66226LY," Pay Bill Charge ","",expense,325.00,COMPLETED
+2025-04-17,15:00:29,TDH85SRMMY," Merchant Payment Fuliza M-Pesa Online to","",expense,300.00,COMPLETED
+2025-04-16,17:56:02,TDG023LZ6I," OverDraft of Credit Party ","",expense,713.00,COMPLETED
+2025-04-16,16:31:12,TDG61K5H6C," Pay Bill Charge ","",expense,910.00,COMPLETED
+2025-04-16,15:33:22,TDG314XZRD," OverDraft of Credit Party ","",expense,207.00,COMPLETED
+2025-04-16,14:52:11,TDG9ZW21RH," OverDraft of Credit Party ","",expense,100.00,COMPLETED
+2025-04-16,11:29:24,TDG9YY8KKX," Pay Bill Charge ","",expense,505.00,COMPLETED
+2025-04-16,11:27:49,TDG6YXZEDW," Pay Bill Charge ","",expense,505.00,COMPLETED
+2025-04-16,11:17:39,TDG3YWDKQ3," Merchant Payment Fuliza M-Pesa Online to","",expense,150.00,COMPLETED
+2025-04-16,11:15:12,TDG0YW01QM," Merchant Payment Fuliza M-Pesa Online to","",expense,495.00,COMPLETED
+2025-04-15,15:02:46,TDF2V8R7AY," Business Payment from 329299 -","329299",income,5000.00,COMPLETED
+2025-04-15,15:02:46,TDF2V8RAC4," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-15,15:01:42,TDF1V8JHTR," Merchant Payment Fuliza M-Pesa Online to","",expense,3016.50,COMPLETED
+2025-04-15,13:15:41,TDF9UP0WG1," OverDraft of Credit Party ","",expense,613.00,COMPLETED
+2025-04-14,15:57:07,TDE5QXCC1B," Pay Bill Charge ","",expense,1415.00,COMPLETED
+2025-04-13,15:03:37,TDD5M2P6RN," Merchant Payment Fuliza M-Pesa Online to","",expense,210.00,COMPLETED
+2025-04-13,12:18:28,TDD5LB2XQ7," Merchant Payment Fuliza M-Pesa Online to","",expense,690.00,COMPLETED
+2025-04-13,12:15:24,TDD0LAM2NC," Merchant Payment Fuliza M-Pesa Online to","",expense,403.25,COMPLETED
+2025-04-13,11:35:13,TDD6L4AXDA," Business Payment from 329299 -","329299",income,0.00,COMPLETED
+2025-04-13,11:35:13,TDD6L4AQPK," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-13,11:33:00,TDD1L3XDVF," Pay Bill Charge ","",expense,1010.00,COMPLETED
+2025-04-13,09:20:13,TDD2KKKVDI," Pay Bill Charge ","",expense,1010.00,COMPLETED
+2025-04-12,17:32:38,TDC9ILEJ0H," Pay Bill Charge ","",expense,505.00,COMPLETED
+2025-04-12,17:22:01,TDC8IJ2VZI," OverDraft of Credit Party ","",expense,100.00,COMPLETED
+2025-04-12,17:07:59,TDC7IFX9AR," Merchant Payment Fuliza M-Pesa Online to","",expense,400.00,COMPLETED
+2025-04-12,16:46:31,TDC5IAIHBL," OverDraft of Credit Party ","",expense,70.00,COMPLETED
+2025-04-12,10:33:44,TDC8G9XI2A," Merchant Payment Fuliza M-Pesa Online to","",expense,1700.00,COMPLETED
+2025-04-11,20:09:04,TDB6EFLLUU," Merchant Payment Fuliza M-Pesa Online to","",expense,790.00,COMPLETED
+2025-04-11,19:56:32,TDB6EEPR3I," OverDraft of Credit Party ","",expense,3418.21,COMPLETED
+2025-04-11,19:22:18,TDB9EBQ0DF," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-11,19:22:18,TDB4EBPPEU," Business Payment from 329299 -","329299",income,0.00,COMPLETED
+2025-04-11,19:19:45,TDB1EBGDF7," Merchant Payment Fuliza M-Pesa Online to","",expense,2000.00,COMPLETED
+2025-04-11,18:30:42,TDB8E53FQ0," Merchant Payment Fuliza M-Pesa Online to","",expense,4022.00,COMPLETED
+2025-04-11,17:14:01,TDB5DQTHLT," OverDraft of Credit Party ","",expense,407.00,COMPLETED
+2025-04-11,17:13:28,TDB7DQP9JZ," Merchant Payment Fuliza M-Pesa Online to","",expense,1849.42,COMPLETED
+2025-04-11,16:38:49,TDB0DILEOA," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-11,16:38:47,TDB3DILENT," Business Payment from 329299 -","329299",income,6000.00,COMPLETED
+2025-04-11,09:09:47,TDB2B6CDFA," Merchant Payment Fuliza M-Pesa Online to","",expense,500.00,COMPLETED
+2025-04-10,13:26:16,TDA07JIFFQ," OverDraft of Credit Party ","",expense,80.00,COMPLETED
+2025-04-09,14:17:48,TD9032ZDCK," Merchant Payment Fuliza M-Pesa Online to","",expense,400.00,COMPLETED
+2025-04-09,14:05:02,TD9630NFWS," Merchant Payment Fuliza M-Pesa Online to","",expense,340.00,COMPLETED
+2025-04-09,14:02:29,TD933077PV," Pay Bill Charge ","",expense,155.00,COMPLETED
+2025-04-09,13:48:57,TD962XU8VM," Merchant Payment Fuliza M-Pesa Online to","",expense,50.00,COMPLETED
+2025-04-09,06:47:58,TD9814NI6Q," OverDraft of Credit Party ","",expense,713.00,COMPLETED
+2025-04-09,06:45:25,TD9414A94G," OverDraft of Credit Party ","",expense,507.00,COMPLETED
+2025-04-08,11:57:45,TD80WOIXG2," OverDraft of Credit Party ","",expense,472.24,COMPLETED
+2025-04-08,11:57:14,TD87WOG72V," Customer Transfer to 254795***996 -","254795***996",expense,0.00,COMPLETED
+2025-04-08,11:01:19,TD84WFLIGW," Customer Transfer to 254700***429 -","254700***429",expense,0.00,COMPLETED
+2025-04-08,10:50:37,TD81WDURM7," Merchant Payment Online to 6864929 -","6864929",expense,0.00,COMPLETED
+2025-04-08,09:19:29,TD84VZ4VVW," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-04-08,09:18:02,TD81VYWQXZ," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-08,09:18:01,TD85VYWO09," Business Payment from 329299 -","329299",income,0.00,COMPLETED
+2025-04-07,13:55:17,TD79SGS9CV," Merchant Payment Fuliza M-Pesa Online to","",expense,400.00,COMPLETED
+2025-04-07,09:42:18,TD79RB6AQT," Merchant Payment Fuliza M-Pesa Online to","",expense,1975.48,COMPLETED
+2025-04-07,03:34:16,TD74PX5218," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-04-07,03:33:04,TD77PX314L," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-07,03:33:04,TD74PX35JY," Business Payment from 329299 -","329299",income,6900.00,COMPLETED
+2025-04-06,17:16:58,TD62P25758," Merchant Payment Fuliza M-Pesa Online to","",expense,790.00,COMPLETED
+2025-04-06,17:06:01,TD60P024KY," OverDraft of Credit Party ","",expense,2938.19,COMPLETED
+2025-04-06,17:05:51,TD67P00T7L," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-06,17:05:48,TD61P00U0L," Business Payment from 329299 -","329299",income,9000.00,COMPLETED
+2025-04-06,17:02:16,TD66OZBHSQ," Pay Bill Charge ","",expense,2819.99,COMPLETED
+2025-04-06,17:01:18,TD65OZ4E9J," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-06,17:01:17,TD69OZ45IN," Business Payment from 329299 -","329299",income,5500.00,COMPLETED
+2025-04-06,14:26:54,TD62O1Q1P0," OverDraft of Credit Party ","",expense,1323.00,COMPLETED
+2025-04-06,12:53:45,TD68NLLVZC," Merchant Payment Fuliza M-Pesa Online to","",expense,60.00,COMPLETED
+2025-04-06,11:33:24,TD63N8FJXZ," Merchant Payment Fuliza M-Pesa Online to","",expense,295.00,COMPLETED
+2025-04-06,10:09:17,TD66MVAUFI," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-06,10:09:16,TD65MVAOHL," Business Payment from 329299 -","329299",income,8000.00,COMPLETED
+2025-04-06,09:50:23,TD60MSKLG8," OverDraft of Credit Party ","",expense,5057.00,COMPLETED
+2025-04-06,09:28:42,TD65MPGRPP," Pay Bill Charge ","",expense,1010.00,COMPLETED
+2025-04-06,08:32:41,TD61MHRTSX," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-06,08:32:41,TD63MHS5SX," Funds received from 254700***667 - KEVIN","254700***667",income,1200.00,COMPLETED
+2025-04-06,07:56:05,TD65MCR42N," OverDraft of Credit Party ","",expense,1223.00,COMPLETED
+2025-04-06,07:49:57,TD60MBWLY0," OverDraft of Credit Party ","",expense,307.00,COMPLETED
+2025-04-06,07:36:09,TD68MA084O," OverDraft of Credit Party ","",expense,307.00,COMPLETED
+2025-04-06,07:32:31,TD60M9IIBW," OverDraft of Credit Party ","",expense,100.00,COMPLETED
+2025-04-06,07:29:56,TD62M95NA8," OverDraft of Credit Party ","",expense,307.00,COMPLETED
+2025-04-05,13:27:40,TD51J39WNF," Pay Bill Charge ","",expense,700.00,COMPLETED
+2025-04-05,12:43:26,TD59IVPPCN," Merchant Payment Fuliza M-Pesa Online to","",expense,100.00,COMPLETED
+2025-04-05,12:32:04,TD54ITRG4A," OverDraft of Credit Party ","",expense,207.00,COMPLETED
+2025-04-05,12:21:48,TD57IRZQNN," OverDraft of Credit Party ","",expense,50.00,COMPLETED
+2025-04-05,07:03:52,TD53HC8D6H," Merchant Payment Fuliza M-Pesa Online to","",expense,550.00,COMPLETED
+2025-04-05,04:06:24,TD58GP79P6," Merchant Payment Fuliza M-Pesa Online to","",expense,766.36,COMPLETED
+2025-04-05,03:54:36,TD59GOAZH7," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-04-05,03:20:15,TD58GMESYO," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-05,03:20:15,TD55GMEV7Z," Business Payment from 329299 -","329299",income,6000.00,COMPLETED
+2025-04-04,19:21:51,TD44G8AZ32," Merchant Payment Fuliza M-Pesa Online to","",expense,800.00,COMPLETED
+2025-04-04,17:02:29,TD43FJH46R," Merchant Payment Fuliza M-Pesa Online to","",expense,1350.00,COMPLETED
+2025-04-04,08:55:42,TD41CWUX63," OverDraft of Credit Party ","",expense,2767.18,COMPLETED
+2025-04-04,08:54:46,TD43CWPO7D," Customer Transfer to 254795***996 -","254795***996",expense,0.00,COMPLETED
+2025-04-04,08:49:13,TD40CVU2SW," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-04,08:49:04,TD44CVU5MY," Business Payment from 329299 -","329299",income,8000.00,COMPLETED
+2025-04-04,07:52:56,TD41CN25HR," OverDraft of Credit Party ","",expense,357.00,COMPLETED
+2025-04-04,05:10:53,TD40BZ31CS," Pay Bill Online Fuliza M-Pesa to 827142 -","827142",expense,1538.22,COMPLETED
+2025-04-04,05:09:23,TD46BYVUB4," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-04,05:09:23,TD49BYVYQX," Business Payment from 329299 -","329299",income,6000.00,COMPLETED
+2025-04-03,11:38:27,TD388SHBOU," OverDraft of Credit Party ","",expense,1223.00,COMPLETED
+2025-04-02,17:01:58,TD225ROGHS," Pay Bill Charge ","",expense,710.00,COMPLETED
+2025-04-02,15:59:52,TD275APRI7," OverDraft of Credit Party ","",expense,209.79,COMPLETED
+2025-04-02,12:46:03,TD2048ITY2," Customer Transfer to 254746***122 - IAN","254746***122",expense,0.00,COMPLETED
+2025-04-02,12:00:23,TD2441F0JK," Customer Transfer to 254743***470 -","254743***470",expense,0.00,COMPLETED
+2025-04-02,07:26:26,TD262UK6BC," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-04-02,06:07:00,TD232IQJ1H," Merchant Payment Online to 6569643 -","6569643",expense,0.00,COMPLETED
+2025-04-02,04:35:34,TD2226KKQI," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-04-02,04:34:42,TD2026H2A8," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-04-02,04:34:42,TD2626H3S0," Business Payment from 329299 -","329299",income,6000.00,COMPLETED
+2025-04-01,14:22:32,TD17YV3NVP," OverDraft of Credit Party ","",expense,127.00,COMPLETED
+2025-04-01,14:17:57,TD11YU8O9B," Merchant Payment Fuliza M-Pesa Online to","",expense,200.00,COMPLETED
+2025-04-01,11:48:29,TD14Y5R8Y6," Merchant Payment Fuliza M-Pesa Online to","",expense,500.00,COMPLETED
+2025-04-01,10:35:18,TD18XU3TFI," OverDraft of Credit Party ","",expense,185.00,COMPLETED
+2025-04-01,10:32:06,TD16XTKHNE," Pay Bill Online Fuliza M-Pesa to 400200 -","400200",expense,12.89,COMPLETED
+2025-04-01,10:31:07,TD18XTET4Y," Pay Bill Online to 400200 - Co-operative","400200",expense,0.00,COMPLETED
+2025-03-31,14:13:45,TCV5U5A04B," Merchant Payment Online to 6752548 -","6752548",expense,0.00,COMPLETED
+2025-03-31,11:57:36,TCV4TJ5D3A," Business Payment from 329299 -","329299",income,4700.00,COMPLETED
+2025-03-31,11:57:36,TCV5TJ5CB9," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-03-31,11:55:37,TCV4TIU2S2," Merchant Payment Fuliza M-Pesa Online to","",expense,1600.00,COMPLETED
+2025-03-31,09:18:20,TCV1SUA7OR," OverDraft of Credit Party ","",expense,1013.00,COMPLETED
+2025-03-30,16:57:21,TCU2QOWCOO," Merchant Payment Fuliza M-Pesa Online to","",expense,100.00,COMPLETED
+2025-03-30,16:53:46,TCU3QO4A59," Pay Bill Charge ","",expense,610.00,COMPLETED
+2025-03-30,16:08:25,TCU7QDBQ33," OverDraft of Credit Party ","",expense,402.63,COMPLETED
+2025-03-30,16:07:28,TCU7QD3L09," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-30,16:07:05,TCU6QD08M2," Business Payment from 329299 -","329299",income,0.00,COMPLETED
+2025-03-30,08:38:36,TCU8OAR5P2," Merchant Payment Online to 796547 -","796547",expense,0.00,COMPLETED
+2025-03-30,08:36:59,TCU0OAJCK0," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-30,07:39:09,TCU0O2M7CS," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-29,18:06:56,TCT2ML5XUQ," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-29,18:00:49,TCT7MK1ADB," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-29,13:09:11,TCT7KS9NEX," Customer Transfer to 254721***922 -","254721***922",expense,0.00,COMPLETED
+2025-03-29,10:34:32,TCT9K2MXCF," Customer Transfer to 254703***468 -","254703***468",expense,0.00,COMPLETED
+2025-03-29,10:01:10,TCT2JX87VE," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-29,09:14:52,TCT9JQ0N1F," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-29,09:14:22,TCT7JPXNZR," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-03-29,09:14:21,TCT2JPXKBO," Business Payment from 329299 -","329299",income,0.00,COMPLETED
+2025-03-29,08:08:12,TCT2JFVM5A," Pay Bill Charge ","",expense,223.39,COMPLETED
+2025-03-28,16:44:06,TCS4HAWKK0," Customer Transfer to 254710***192 -","254710***192",expense,0.00,COMPLETED
+2025-03-27,20:05:13,TCR9DJSHQV," Customer Transfer to 0793***123 - PAUL","0793***123",expense,0.00,COMPLETED
+2025-03-27,14:11:54,TCR6BQESUM," Pay Bill Online to 516600 - DTB Account","516600",expense,0.00,COMPLETED
+2025-03-27,12:34:38,TCR4BAR3F8," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-03-27,12:34:37,TCR1BAQQ3Z," Business Payment from 329299 -","329299",income,5000.00,COMPLETED
+2025-03-27,12:09:51,TCR4B75F1A," Merchant Payment Fuliza M-Pesa Online to","",expense,1137.00,COMPLETED
+2025-03-26,22:12:15,TCR1958H0R," Pay Bill Charge ","",expense,505.00,COMPLETED
+2025-03-26,22:12:00,TCR1958NJR," Business Payment from 329299 -","329299",income,9000.00,COMPLETED
+2025-03-26,22:12:00,TCR4958IAO," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-03-26,21:07:17,TCR593RUQ5," OverDraft of Credit Party ","",expense,100.00,COMPLETED
+2025-03-26,20:58:21,TCQ293FXCK," OverDraft of Credit Party ","",expense,100.00,COMPLETED
+2025-03-26,20:56:32,TCQ093DRG2," Pay Bill Online Fuliza M-Pesa to 7613044 -","7613044",expense,100.00,COMPLETED
+2025-03-26,19:00:09,TCQ78UTSI9," OverDraft of Credit Party ","",expense,207.00,COMPLETED
+2025-03-26,18:51:11,TCQ38TMVHL," OverDraft of Credit Party ","",expense,507.00,COMPLETED
+2025-03-26,15:21:51,TCQ97KELVL," OverDraft of Credit Party ","",expense,307.00,COMPLETED
+2025-03-26,14:29:27,TCQ07A0MMO," Merchant Payment Fuliza M-Pesa Online to","",expense,1700.00,COMPLETED
+2025-03-26,11:37:10,TCQ06J88OU," OverDraft of Credit Party ","",expense,100.00,COMPLETED
+2025-03-26,09:19:30,TCQ15Z2O9B," Pay Bill Charge ","",expense,3564.00,COMPLETED
+2025-03-26,08:54:29,TCQ65VMOJA," Pay Bill Charge ","",expense,1010.00,COMPLETED
+2025-03-26,06:57:50,TCQ25FHVBI," OverDraft of Credit Party ","",expense,563.00,COMPLETED
+2025-03-26,05:35:26,TCQ154NE3H," Merchant Payment Fuliza M-Pesa Online to","",expense,2267.71,COMPLETED
+2025-03-26,04:53:55,TCQ44ZPSOS," Customer Transfer to 254726***953 - Mark","254726***953",expense,0.00,COMPLETED
+2025-03-25,16:23:17,TCP93JQH6D," Merchant Payment Online to 7258463 -","7258463",expense,0.00,COMPLETED
+2025-03-25,09:23:29,TCP21K6F96," Customer Transfer to 254704***559 -","254704***559",expense,0.00,COMPLETED
+2025-03-25,07:37:58,TCP215O5QQ," Merchant Payment Online to 7300564 -","7300564",expense,0.00,COMPLETED
+2025-03-25,06:22:29,TCP4ZVDHVC," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-25,06:20:26,TCP0ZV3N62," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-03-25,06:20:22,TCP1ZV3H9B," Business Payment from 329299 -","329299",income,0.00,COMPLETED
+2025-03-24,16:06:38,TCO3Y1NAF5," OverDraft of Credit Party ","",expense,1223.00,COMPLETED
+2025-03-24,11:30:29,TCO4WP5JDA," OverDraft of Credit Party ","",expense,763.00,COMPLETED
+2025-03-24,09:57:13,TCO0WB9UO4," OverDraft of Credit Party ","",expense,507.00,COMPLETED
+2025-03-22,16:16:32,TCM2PITFSW," Customer Send Money to Micro SME","Micro SME",transfer,100.00,COMPLETED
+2025-03-22,16:15:13,TCM1PII2T9," Pay Bill Charge ","",expense,155.00,COMPLETED
+2025-03-22,15:38:24,TCM5P9PNLR," OverDraft of Credit Party ","",expense,2021.01,COMPLETED
+2025-03-22,12:25:12,TCM3OC02Q9," Customer Transfer to 254718***292 -","254718***292",expense,0.00,COMPLETED
+2025-03-22,04:13:26,TCM0MH1XAC," Customer Transfer to 0793***123 - PAUL","0793***123",expense,0.00,COMPLETED
+2025-03-22,02:37:24,TCM3MCYHTT," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-22,02:36:58,TCM8MCYEEW," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-03-22,02:36:58,TCM7MCY68Z," Business Payment from 329299 -","329299",income,3000.00,COMPLETED
+2025-03-21,15:22:45,TCL6KOCUYG," Merchant Payment Fuliza M-Pesa Online to","",expense,240.00,COMPLETED
+2025-03-21,08:28:54,TCL9IVQIRJ," OverDraft of Credit Party ","",expense,563.00,COMPLETED
+2025-03-21,08:28:22,TCL7IVO081," Pay Bill Charge ","",expense,1196.01,COMPLETED
+2025-03-21,08:23:56,TCL1IV1B6J," Customer Transfer to 254768***211 - JOHN","254768***211",expense,0.00,COMPLETED
+2025-03-21,06:04:09,TCL0IBVN66," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-20,18:44:18,TCK1HF1Y31," Customer Transfer to 254718***994 -","254718***994",expense,0.00,COMPLETED
+2025-03-20,16:06:33,TCK9GHY4Y9," Pay Bill Online to 804200 - EVOPAY LTD","804200",expense,0.00,COMPLETED
+2025-03-20,16:00:15,TCK6GGE91A," Customer Transfer to 254713***196 - ALEX","254713***196",expense,0.00,COMPLETED
+2025-03-20,11:47:48,TCK7F8YR03," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-19,17:34:11,TCJ9CPPNT5," Customer Transfer to 254725***251 -","254725***251",expense,0.00,COMPLETED
+2025-03-19,17:15:02,TCJ5CLPDXV," Merchant Payment Online to 6802380 -","6802380",expense,0.00,COMPLETED
+2025-03-19,09:47:06,TCJ7AE95L3," Customer Transfer to 254721***922 -","254721***922",expense,0.00,COMPLETED
+2025-03-19,09:34:42,TCJ2ACHM9C," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-03-19,09:34:42,TCJ9ACHP9B," Funds received from 254723***917 -","254723***917",income,0.00,COMPLETED
+2025-03-18,15:11:59,TCI27FQIRY," Pay Bill Charge ","",expense,3525.00,COMPLETED
+2025-03-17,17:15:24,TCH03UJ6AC," OverDraft of Credit Party ","",expense,1013.00,COMPLETED
+2025-03-17,17:13:20,TCH13U2STJ," Customer Send Money to Micro SME","Micro SME",transfer,207.00,COMPLETED
+2025-03-17,16:48:51,TCH83OAO2A," OverDraft of Credit Party ","",expense,307.00,COMPLETED
+2025-03-17,16:46:30,TCH73NPDAD," Merchant Payment Fuliza M-Pesa Online to","",expense,3049.00,COMPLETED
+2025-03-17,15:55:59,TCH23AVO86," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-03-17,15:55:56,TCH13AVI95," Business Payment from 329299 -","329299",income,0.00,COMPLETED
+2025-03-17,06:55:04,TCH4ZY4PY2," OverDraft of Credit Party ","",expense,763.00,COMPLETED
+2025-03-17,05:53:29,TCH8ZPTMYS," Pay Bill Charge ","",expense,3684.00,COMPLETED
+2025-03-16,17:10:02,TCG4YEBT3I," OverDraft of Credit Party ","",expense,713.00,COMPLETED
+2025-03-16,16:00:52,TCG5XY4YMD," OverDraft of Credit Party ","",expense,913.00,COMPLETED
+2025-03-16,10:48:37,TCG8WI5T7C," Merchant Payment Fuliza M-Pesa Online to","",expense,800.00,COMPLETED
+2025-03-16,08:33:09,TCG1VZQBNF," Pay Bill Charge ","",expense,1010.00,COMPLETED
+2025-03-15,11:44:12,TCF8S9LXSY," OverDraft of Credit Party ","",expense,207.00,COMPLETED
+2025-03-15,11:43:19,TCF2S9H4ZY," Merchant Payment Fuliza M-Pesa Online to","",expense,251.37,COMPLETED
+2025-03-15,10:41:52,TCF9RZTHXX," Merchant Payment Fuliza M-Pesa Online to","",expense,350.00,COMPLETED
+2025-03-15,10:37:28,TCF5RZ41B7," Merchant Payment Fuliza M-Pesa Online to","",expense,10.00,COMPLETED
+2025-03-15,08:15:06,TCF8RDHBXC," OverDraft of Credit Party ","",expense,100.00,COMPLETED
+2025-03-14,18:48:32,TCE1PVNC0P," Merchant Payment Fuliza M-Pesa Online to","",expense,40.00,COMPLETED
+2025-03-14,18:47:03,TCE8PVFSOA," Merchant Payment Fuliza M-Pesa Online to","",expense,580.00,COMPLETED
+2025-03-13,15:05:54,TCD5JYC83T," Merchant Payment Fuliza M-Pesa Online to","",expense,793.00,COMPLETED
+2025-03-13,13:38:22,TCD3JIQNWF," Merchant Payment Fuliza M-Pesa Online to","",expense,347.40,COMPLETED
+2025-03-13,10:29:43,TCD5IR3KZH," Pay Bill Charge ","",expense,0.00,COMPLETED
+2025-03-13,06:15:03,TCD2HRG4ZI," Business Payment from 329299 -","329299",income,4000.00,COMPLETED
+2025-03-13,06:15:03,TCD4HRFVCC," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-03-12,16:41:12,TCC0G3JP7K," Pay Bill Charge ","",expense,520.00,COMPLETED
+2025-03-12,16:05:14,TCC5FU8SV3," OverDraft of Credit Party ","",expense,1523.00,COMPLETED
+2025-03-12,15:55:53,TCC1FRWQH9," Pay Bill Charge ","",expense,262.00,COMPLETED
+2025-03-12,15:32:03,TCC6FMEFQE," OverDraft of Credit Party ","",expense,435.00,COMPLETED
+2025-03-12,15:07:09,TCC4FH13KI," OD Loan Repayment to 232323 - M-PESA","232323",transfer,0.00,COMPLETED
+2025-03-12,15:07:08,TCC2FH0Z2S," Funds received from 254722***583 -","254722***583",income,0.00,COMPLETED
+2025-03-12,10:37:45,TCC6E9WHM2," Merchant Payment Fuliza M-Pesa Online to","",expense,210.00,COMPLETED
+2025-03-12,10:13:31,TCC7E66R9P," OverDraft of Credit Party ","",expense,1223.00,COMPLETED
+2025-03-12,08:57:12,TCC4DV29K4," OverDraft of Credit Party ","",expense,870.96,COMPLETED
+2025-03-12,08:16:47,TCC1DP1C6J," Pay Bill Charge ","",expense,0.00,COMPLETED

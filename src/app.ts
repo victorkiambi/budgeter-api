@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.routes';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger';
 import { accountRoutes } from './routes/account.routes';
+import statementRoutes from './routes/statement.routes';
 
 // Load environment variables
 dotenv.config();
@@ -29,6 +30,7 @@ app.get('/swagger.json', (req, res) => {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/accounts', accountRoutes);
+app.use('/api/statements', statementRoutes);
 
 // Error handling
 app.use(errorHandler);
