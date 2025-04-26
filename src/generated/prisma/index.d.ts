@@ -48,6 +48,16 @@ export type Budget = $Result.DefaultSelection<Prisma.$BudgetPayload>
  * 
  */
 export type BudgetCategory = $Result.DefaultSelection<Prisma.$BudgetCategoryPayload>
+/**
+ * Model MerchantRule
+ * 
+ */
+export type MerchantRule = $Result.DefaultSelection<Prisma.$MerchantRulePayload>
+/**
+ * Model TransactionMatch
+ * 
+ */
+export type TransactionMatch = $Result.DefaultSelection<Prisma.$TransactionMatchPayload>
 
 /**
  * Enums
@@ -99,6 +109,63 @@ export const TransactionType: {
 
 export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType]
 
+
+export const PaymentChannel: {
+  MPESA: 'MPESA',
+  BANK_TRANSFER: 'BANK_TRANSFER',
+  CARD_PAYMENT: 'CARD_PAYMENT',
+  CASH: 'CASH',
+  CHEQUE: 'CHEQUE',
+  MOBILE_BANKING: 'MOBILE_BANKING',
+  AGENCY_BANKING: 'AGENCY_BANKING'
+};
+
+export type PaymentChannel = (typeof PaymentChannel)[keyof typeof PaymentChannel]
+
+
+export const MerchantType: {
+  MPESA_PAYBILL: 'MPESA_PAYBILL',
+  MPESA_TILL: 'MPESA_TILL',
+  MPESA_SEND: 'MPESA_SEND',
+  BANK: 'BANK',
+  RETAIL: 'RETAIL',
+  UTILITY: 'UTILITY',
+  TELCO: 'TELCO',
+  GOVERNMENT: 'GOVERNMENT',
+  EDUCATION: 'EDUCATION',
+  TRANSPORT: 'TRANSPORT',
+  FOOD_BEVERAGE: 'FOOD_BEVERAGE',
+  GENERAL: 'GENERAL'
+};
+
+export type MerchantType = (typeof MerchantType)[keyof typeof MerchantType]
+
+
+export const TransactionFrequency: {
+  DAILY: 'DAILY',
+  WEEKLY: 'WEEKLY',
+  MONTHLY: 'MONTHLY',
+  QUARTERLY: 'QUARTERLY',
+  ANNUAL: 'ANNUAL',
+  IRREGULAR: 'IRREGULAR'
+};
+
+export type TransactionFrequency = (typeof TransactionFrequency)[keyof typeof TransactionFrequency]
+
+
+export const MatchMethod: {
+  EXACT_MATCH: 'EXACT_MATCH',
+  PATTERN_MATCH: 'PATTERN_MATCH',
+  KEYWORD_MATCH: 'KEYWORD_MATCH',
+  MPESA_PAYBILL: 'MPESA_PAYBILL',
+  MPESA_TILL: 'MPESA_TILL',
+  AMOUNT_PATTERN: 'AMOUNT_PATTERN',
+  MANUAL: 'MANUAL',
+  FALLBACK: 'FALLBACK'
+};
+
+export type MatchMethod = (typeof MatchMethod)[keyof typeof MatchMethod]
+
 }
 
 export type AccountType = $Enums.AccountType
@@ -120,6 +187,22 @@ export const CategoryType: typeof $Enums.CategoryType
 export type TransactionType = $Enums.TransactionType
 
 export const TransactionType: typeof $Enums.TransactionType
+
+export type PaymentChannel = $Enums.PaymentChannel
+
+export const PaymentChannel: typeof $Enums.PaymentChannel
+
+export type MerchantType = $Enums.MerchantType
+
+export const MerchantType: typeof $Enums.MerchantType
+
+export type TransactionFrequency = $Enums.TransactionFrequency
+
+export const TransactionFrequency: typeof $Enums.TransactionFrequency
+
+export type MatchMethod = $Enums.MatchMethod
+
+export const MatchMethod: typeof $Enums.MatchMethod
 
 /**
  * ##  Prisma Client ʲˢ
@@ -313,6 +396,26 @@ export class PrismaClient<
     * ```
     */
   get budgetCategory(): Prisma.BudgetCategoryDelegate<ExtArgs>;
+
+  /**
+   * `prisma.merchantRule`: Exposes CRUD operations for the **MerchantRule** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MerchantRules
+    * const merchantRules = await prisma.merchantRule.findMany()
+    * ```
+    */
+  get merchantRule(): Prisma.MerchantRuleDelegate<ExtArgs>;
+
+  /**
+   * `prisma.transactionMatch`: Exposes CRUD operations for the **TransactionMatch** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TransactionMatches
+    * const transactionMatches = await prisma.transactionMatch.findMany()
+    * ```
+    */
+  get transactionMatch(): Prisma.TransactionMatchDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -760,7 +863,9 @@ export namespace Prisma {
     Category: 'Category',
     Transaction: 'Transaction',
     Budget: 'Budget',
-    BudgetCategory: 'BudgetCategory'
+    BudgetCategory: 'BudgetCategory',
+    MerchantRule: 'MerchantRule',
+    TransactionMatch: 'TransactionMatch'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -776,7 +881,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "account" | "statement" | "category" | "transaction" | "budget" | "budgetCategory"
+      modelProps: "user" | "account" | "statement" | "category" | "transaction" | "budget" | "budgetCategory" | "merchantRule" | "transactionMatch"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1270,6 +1375,146 @@ export namespace Prisma {
           }
         }
       }
+      MerchantRule: {
+        payload: Prisma.$MerchantRulePayload<ExtArgs>
+        fields: Prisma.MerchantRuleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MerchantRuleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MerchantRulePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MerchantRuleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MerchantRulePayload>
+          }
+          findFirst: {
+            args: Prisma.MerchantRuleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MerchantRulePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MerchantRuleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MerchantRulePayload>
+          }
+          findMany: {
+            args: Prisma.MerchantRuleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MerchantRulePayload>[]
+          }
+          create: {
+            args: Prisma.MerchantRuleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MerchantRulePayload>
+          }
+          createMany: {
+            args: Prisma.MerchantRuleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MerchantRuleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MerchantRulePayload>[]
+          }
+          delete: {
+            args: Prisma.MerchantRuleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MerchantRulePayload>
+          }
+          update: {
+            args: Prisma.MerchantRuleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MerchantRulePayload>
+          }
+          deleteMany: {
+            args: Prisma.MerchantRuleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MerchantRuleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MerchantRuleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MerchantRulePayload>
+          }
+          aggregate: {
+            args: Prisma.MerchantRuleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMerchantRule>
+          }
+          groupBy: {
+            args: Prisma.MerchantRuleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MerchantRuleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MerchantRuleCountArgs<ExtArgs>
+            result: $Utils.Optional<MerchantRuleCountAggregateOutputType> | number
+          }
+        }
+      }
+      TransactionMatch: {
+        payload: Prisma.$TransactionMatchPayload<ExtArgs>
+        fields: Prisma.TransactionMatchFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TransactionMatchFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionMatchPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TransactionMatchFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionMatchPayload>
+          }
+          findFirst: {
+            args: Prisma.TransactionMatchFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionMatchPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TransactionMatchFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionMatchPayload>
+          }
+          findMany: {
+            args: Prisma.TransactionMatchFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionMatchPayload>[]
+          }
+          create: {
+            args: Prisma.TransactionMatchCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionMatchPayload>
+          }
+          createMany: {
+            args: Prisma.TransactionMatchCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TransactionMatchCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionMatchPayload>[]
+          }
+          delete: {
+            args: Prisma.TransactionMatchDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionMatchPayload>
+          }
+          update: {
+            args: Prisma.TransactionMatchUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionMatchPayload>
+          }
+          deleteMany: {
+            args: Prisma.TransactionMatchDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TransactionMatchUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TransactionMatchUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionMatchPayload>
+          }
+          aggregate: {
+            args: Prisma.TransactionMatchAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTransactionMatch>
+          }
+          groupBy: {
+            args: Prisma.TransactionMatchGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TransactionMatchGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TransactionMatchCountArgs<ExtArgs>
+            result: $Utils.Optional<TransactionMatchCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1562,11 +1807,13 @@ export namespace Prisma {
   export type CategoryCountOutputType = {
     transactions: number
     budgetCategory: number
+    merchantRules: number
   }
 
   export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     transactions?: boolean | CategoryCountOutputTypeCountTransactionsArgs
     budgetCategory?: boolean | CategoryCountOutputTypeCountBudgetCategoryArgs
+    merchantRules?: boolean | CategoryCountOutputTypeCountMerchantRulesArgs
   }
 
   // Custom InputTypes
@@ -1592,6 +1839,13 @@ export namespace Prisma {
    */
   export type CategoryCountOutputTypeCountBudgetCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BudgetCategoryWhereInput
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountMerchantRulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MerchantRuleWhereInput
   }
 
 
@@ -1623,6 +1877,37 @@ export namespace Prisma {
    */
   export type BudgetCountOutputTypeCountCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BudgetCategoryWhereInput
+  }
+
+
+  /**
+   * Count Type MerchantRuleCountOutputType
+   */
+
+  export type MerchantRuleCountOutputType = {
+    matches: number
+  }
+
+  export type MerchantRuleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    matches?: boolean | MerchantRuleCountOutputTypeCountMatchesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MerchantRuleCountOutputType without action
+   */
+  export type MerchantRuleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRuleCountOutputType
+     */
+    select?: MerchantRuleCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MerchantRuleCountOutputType without action
+   */
+  export type MerchantRuleCountOutputTypeCountMatchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionMatchWhereInput
   }
 
 
@@ -4862,6 +5147,7 @@ export namespace Prisma {
     keywords?: boolean
     transactions?: boolean | Category$transactionsArgs<ExtArgs>
     budgetCategory?: boolean | Category$budgetCategoryArgs<ExtArgs>
+    merchantRules?: boolean | Category$merchantRulesArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
@@ -4882,6 +5168,7 @@ export namespace Prisma {
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     transactions?: boolean | Category$transactionsArgs<ExtArgs>
     budgetCategory?: boolean | Category$budgetCategoryArgs<ExtArgs>
+    merchantRules?: boolean | Category$merchantRulesArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -4891,6 +5178,7 @@ export namespace Prisma {
     objects: {
       transactions: Prisma.$TransactionPayload<ExtArgs>[]
       budgetCategory: Prisma.$BudgetCategoryPayload<ExtArgs>[]
+      merchantRules: Prisma.$MerchantRulePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5263,6 +5551,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     transactions<T extends Category$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Category$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany"> | Null>
     budgetCategory<T extends Category$budgetCategoryArgs<ExtArgs> = {}>(args?: Subset<T, Category$budgetCategoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BudgetCategoryPayload<ExtArgs>, T, "findMany"> | Null>
+    merchantRules<T extends Category$merchantRulesArgs<ExtArgs> = {}>(args?: Subset<T, Category$merchantRulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5650,6 +5939,26 @@ export namespace Prisma {
   }
 
   /**
+   * Category.merchantRules
+   */
+  export type Category$merchantRulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+    where?: MerchantRuleWhereInput
+    orderBy?: MerchantRuleOrderByWithRelationInput | MerchantRuleOrderByWithRelationInput[]
+    cursor?: MerchantRuleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MerchantRuleScalarFieldEnum | MerchantRuleScalarFieldEnum[]
+  }
+
+  /**
    * Category without action
    */
   export type CategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5696,6 +6005,11 @@ export namespace Prisma {
     categoryId: string | null
     currency: $Enums.Currency | null
     createdAt: Date | null
+    paymentChannel: $Enums.PaymentChannel | null
+    merchantName: string | null
+    mpesaPaybill: string | null
+    mpesaTill: string | null
+    mpesaReference: string | null
   }
 
   export type TransactionMaxAggregateOutputType = {
@@ -5710,6 +6024,11 @@ export namespace Prisma {
     categoryId: string | null
     currency: $Enums.Currency | null
     createdAt: Date | null
+    paymentChannel: $Enums.PaymentChannel | null
+    merchantName: string | null
+    mpesaPaybill: string | null
+    mpesaTill: string | null
+    mpesaReference: string | null
   }
 
   export type TransactionCountAggregateOutputType = {
@@ -5724,6 +6043,11 @@ export namespace Prisma {
     categoryId: number
     currency: number
     createdAt: number
+    paymentChannel: number
+    merchantName: number
+    mpesaPaybill: number
+    mpesaTill: number
+    mpesaReference: number
     _all: number
   }
 
@@ -5748,6 +6072,11 @@ export namespace Prisma {
     categoryId?: true
     currency?: true
     createdAt?: true
+    paymentChannel?: true
+    merchantName?: true
+    mpesaPaybill?: true
+    mpesaTill?: true
+    mpesaReference?: true
   }
 
   export type TransactionMaxAggregateInputType = {
@@ -5762,6 +6091,11 @@ export namespace Prisma {
     categoryId?: true
     currency?: true
     createdAt?: true
+    paymentChannel?: true
+    merchantName?: true
+    mpesaPaybill?: true
+    mpesaTill?: true
+    mpesaReference?: true
   }
 
   export type TransactionCountAggregateInputType = {
@@ -5776,6 +6110,11 @@ export namespace Prisma {
     categoryId?: true
     currency?: true
     createdAt?: true
+    paymentChannel?: true
+    merchantName?: true
+    mpesaPaybill?: true
+    mpesaTill?: true
+    mpesaReference?: true
     _all?: true
   }
 
@@ -5877,6 +6216,11 @@ export namespace Prisma {
     categoryId: string | null
     currency: $Enums.Currency
     createdAt: Date
+    paymentChannel: $Enums.PaymentChannel | null
+    merchantName: string | null
+    mpesaPaybill: string | null
+    mpesaTill: string | null
+    mpesaReference: string | null
     _count: TransactionCountAggregateOutputType | null
     _avg: TransactionAvgAggregateOutputType | null
     _sum: TransactionSumAggregateOutputType | null
@@ -5910,10 +6254,16 @@ export namespace Prisma {
     categoryId?: boolean
     currency?: boolean
     createdAt?: boolean
+    paymentChannel?: boolean
+    merchantName?: boolean
+    mpesaPaybill?: boolean
+    mpesaTill?: boolean
+    mpesaReference?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     account?: boolean | AccountDefaultArgs<ExtArgs>
     statement?: boolean | Transaction$statementArgs<ExtArgs>
     category?: boolean | Transaction$categoryArgs<ExtArgs>
+    match?: boolean | Transaction$matchArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
   export type TransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5928,6 +6278,11 @@ export namespace Prisma {
     categoryId?: boolean
     currency?: boolean
     createdAt?: boolean
+    paymentChannel?: boolean
+    merchantName?: boolean
+    mpesaPaybill?: boolean
+    mpesaTill?: boolean
+    mpesaReference?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     account?: boolean | AccountDefaultArgs<ExtArgs>
     statement?: boolean | Transaction$statementArgs<ExtArgs>
@@ -5946,6 +6301,11 @@ export namespace Prisma {
     categoryId?: boolean
     currency?: boolean
     createdAt?: boolean
+    paymentChannel?: boolean
+    merchantName?: boolean
+    mpesaPaybill?: boolean
+    mpesaTill?: boolean
+    mpesaReference?: boolean
   }
 
   export type TransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5953,6 +6313,7 @@ export namespace Prisma {
     account?: boolean | AccountDefaultArgs<ExtArgs>
     statement?: boolean | Transaction$statementArgs<ExtArgs>
     category?: boolean | Transaction$categoryArgs<ExtArgs>
+    match?: boolean | Transaction$matchArgs<ExtArgs>
   }
   export type TransactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -5968,6 +6329,7 @@ export namespace Prisma {
       account: Prisma.$AccountPayload<ExtArgs>
       statement: Prisma.$StatementPayload<ExtArgs> | null
       category: Prisma.$CategoryPayload<ExtArgs> | null
+      match: Prisma.$TransactionMatchPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5981,6 +6343,11 @@ export namespace Prisma {
       categoryId: string | null
       currency: $Enums.Currency
       createdAt: Date
+      paymentChannel: $Enums.PaymentChannel | null
+      merchantName: string | null
+      mpesaPaybill: string | null
+      mpesaTill: string | null
+      mpesaReference: string | null
     }, ExtArgs["result"]["transaction"]>
     composites: {}
   }
@@ -6349,6 +6716,7 @@ export namespace Prisma {
     account<T extends AccountDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AccountDefaultArgs<ExtArgs>>): Prisma__AccountClient<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     statement<T extends Transaction$statementArgs<ExtArgs> = {}>(args?: Subset<T, Transaction$statementArgs<ExtArgs>>): Prisma__StatementClient<$Result.GetResult<Prisma.$StatementPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     category<T extends Transaction$categoryArgs<ExtArgs> = {}>(args?: Subset<T, Transaction$categoryArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    match<T extends Transaction$matchArgs<ExtArgs> = {}>(args?: Subset<T, Transaction$matchArgs<ExtArgs>>): Prisma__TransactionMatchClient<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6389,6 +6757,11 @@ export namespace Prisma {
     readonly categoryId: FieldRef<"Transaction", 'String'>
     readonly currency: FieldRef<"Transaction", 'Currency'>
     readonly createdAt: FieldRef<"Transaction", 'DateTime'>
+    readonly paymentChannel: FieldRef<"Transaction", 'PaymentChannel'>
+    readonly merchantName: FieldRef<"Transaction", 'String'>
+    readonly mpesaPaybill: FieldRef<"Transaction", 'String'>
+    readonly mpesaTill: FieldRef<"Transaction", 'String'>
+    readonly mpesaReference: FieldRef<"Transaction", 'String'>
   }
     
 
@@ -6734,6 +7107,21 @@ export namespace Prisma {
      */
     include?: CategoryInclude<ExtArgs> | null
     where?: CategoryWhereInput
+  }
+
+  /**
+   * Transaction.match
+   */
+  export type Transaction$matchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+    where?: TransactionMatchWhereInput
   }
 
   /**
@@ -8730,6 +9118,2203 @@ export namespace Prisma {
 
 
   /**
+   * Model MerchantRule
+   */
+
+  export type AggregateMerchantRule = {
+    _count: MerchantRuleCountAggregateOutputType | null
+    _avg: MerchantRuleAvgAggregateOutputType | null
+    _sum: MerchantRuleSumAggregateOutputType | null
+    _min: MerchantRuleMinAggregateOutputType | null
+    _max: MerchantRuleMaxAggregateOutputType | null
+  }
+
+  export type MerchantRuleAvgAggregateOutputType = {
+    confidence: Decimal | null
+  }
+
+  export type MerchantRuleSumAggregateOutputType = {
+    confidence: Decimal | null
+  }
+
+  export type MerchantRuleMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    merchantType: $Enums.MerchantType | null
+    mpesaPaybill: string | null
+    mpesaTill: string | null
+    mpesaReference: string | null
+    categoryId: string | null
+    confidence: Decimal | null
+    isActive: boolean | null
+    frequency: $Enums.TransactionFrequency | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MerchantRuleMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    merchantType: $Enums.MerchantType | null
+    mpesaPaybill: string | null
+    mpesaTill: string | null
+    mpesaReference: string | null
+    categoryId: string | null
+    confidence: Decimal | null
+    isActive: boolean | null
+    frequency: $Enums.TransactionFrequency | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MerchantRuleCountAggregateOutputType = {
+    id: number
+    name: number
+    merchantType: number
+    paymentChannels: number
+    patterns: number
+    keywords: number
+    mpesaPaybill: number
+    mpesaTill: number
+    mpesaReference: number
+    categoryId: number
+    confidence: number
+    isActive: number
+    amountPatterns: number
+    frequency: number
+    metadata: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MerchantRuleAvgAggregateInputType = {
+    confidence?: true
+  }
+
+  export type MerchantRuleSumAggregateInputType = {
+    confidence?: true
+  }
+
+  export type MerchantRuleMinAggregateInputType = {
+    id?: true
+    name?: true
+    merchantType?: true
+    mpesaPaybill?: true
+    mpesaTill?: true
+    mpesaReference?: true
+    categoryId?: true
+    confidence?: true
+    isActive?: true
+    frequency?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MerchantRuleMaxAggregateInputType = {
+    id?: true
+    name?: true
+    merchantType?: true
+    mpesaPaybill?: true
+    mpesaTill?: true
+    mpesaReference?: true
+    categoryId?: true
+    confidence?: true
+    isActive?: true
+    frequency?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MerchantRuleCountAggregateInputType = {
+    id?: true
+    name?: true
+    merchantType?: true
+    paymentChannels?: true
+    patterns?: true
+    keywords?: true
+    mpesaPaybill?: true
+    mpesaTill?: true
+    mpesaReference?: true
+    categoryId?: true
+    confidence?: true
+    isActive?: true
+    amountPatterns?: true
+    frequency?: true
+    metadata?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MerchantRuleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MerchantRule to aggregate.
+     */
+    where?: MerchantRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MerchantRules to fetch.
+     */
+    orderBy?: MerchantRuleOrderByWithRelationInput | MerchantRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MerchantRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MerchantRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MerchantRules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MerchantRules
+    **/
+    _count?: true | MerchantRuleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MerchantRuleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MerchantRuleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MerchantRuleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MerchantRuleMaxAggregateInputType
+  }
+
+  export type GetMerchantRuleAggregateType<T extends MerchantRuleAggregateArgs> = {
+        [P in keyof T & keyof AggregateMerchantRule]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMerchantRule[P]>
+      : GetScalarType<T[P], AggregateMerchantRule[P]>
+  }
+
+
+
+
+  export type MerchantRuleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MerchantRuleWhereInput
+    orderBy?: MerchantRuleOrderByWithAggregationInput | MerchantRuleOrderByWithAggregationInput[]
+    by: MerchantRuleScalarFieldEnum[] | MerchantRuleScalarFieldEnum
+    having?: MerchantRuleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MerchantRuleCountAggregateInputType | true
+    _avg?: MerchantRuleAvgAggregateInputType
+    _sum?: MerchantRuleSumAggregateInputType
+    _min?: MerchantRuleMinAggregateInputType
+    _max?: MerchantRuleMaxAggregateInputType
+  }
+
+  export type MerchantRuleGroupByOutputType = {
+    id: string
+    name: string
+    merchantType: $Enums.MerchantType
+    paymentChannels: string[]
+    patterns: string[]
+    keywords: string[]
+    mpesaPaybill: string | null
+    mpesaTill: string | null
+    mpesaReference: string | null
+    categoryId: string
+    confidence: Decimal
+    isActive: boolean
+    amountPatterns: JsonValue | null
+    frequency: $Enums.TransactionFrequency | null
+    metadata: JsonValue | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MerchantRuleCountAggregateOutputType | null
+    _avg: MerchantRuleAvgAggregateOutputType | null
+    _sum: MerchantRuleSumAggregateOutputType | null
+    _min: MerchantRuleMinAggregateOutputType | null
+    _max: MerchantRuleMaxAggregateOutputType | null
+  }
+
+  type GetMerchantRuleGroupByPayload<T extends MerchantRuleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MerchantRuleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MerchantRuleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MerchantRuleGroupByOutputType[P]>
+            : GetScalarType<T[P], MerchantRuleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MerchantRuleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    merchantType?: boolean
+    paymentChannels?: boolean
+    patterns?: boolean
+    keywords?: boolean
+    mpesaPaybill?: boolean
+    mpesaTill?: boolean
+    mpesaReference?: boolean
+    categoryId?: boolean
+    confidence?: boolean
+    isActive?: boolean
+    amountPatterns?: boolean
+    frequency?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    matches?: boolean | MerchantRule$matchesArgs<ExtArgs>
+    _count?: boolean | MerchantRuleCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["merchantRule"]>
+
+  export type MerchantRuleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    merchantType?: boolean
+    paymentChannels?: boolean
+    patterns?: boolean
+    keywords?: boolean
+    mpesaPaybill?: boolean
+    mpesaTill?: boolean
+    mpesaReference?: boolean
+    categoryId?: boolean
+    confidence?: boolean
+    isActive?: boolean
+    amountPatterns?: boolean
+    frequency?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["merchantRule"]>
+
+  export type MerchantRuleSelectScalar = {
+    id?: boolean
+    name?: boolean
+    merchantType?: boolean
+    paymentChannels?: boolean
+    patterns?: boolean
+    keywords?: boolean
+    mpesaPaybill?: boolean
+    mpesaTill?: boolean
+    mpesaReference?: boolean
+    categoryId?: boolean
+    confidence?: boolean
+    isActive?: boolean
+    amountPatterns?: boolean
+    frequency?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MerchantRuleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    matches?: boolean | MerchantRule$matchesArgs<ExtArgs>
+    _count?: boolean | MerchantRuleCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MerchantRuleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }
+
+  export type $MerchantRulePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MerchantRule"
+    objects: {
+      category: Prisma.$CategoryPayload<ExtArgs>
+      matches: Prisma.$TransactionMatchPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      merchantType: $Enums.MerchantType
+      paymentChannels: string[]
+      patterns: string[]
+      keywords: string[]
+      mpesaPaybill: string | null
+      mpesaTill: string | null
+      mpesaReference: string | null
+      categoryId: string
+      confidence: Prisma.Decimal
+      isActive: boolean
+      amountPatterns: Prisma.JsonValue | null
+      frequency: $Enums.TransactionFrequency | null
+      metadata: Prisma.JsonValue | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["merchantRule"]>
+    composites: {}
+  }
+
+  type MerchantRuleGetPayload<S extends boolean | null | undefined | MerchantRuleDefaultArgs> = $Result.GetResult<Prisma.$MerchantRulePayload, S>
+
+  type MerchantRuleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MerchantRuleFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MerchantRuleCountAggregateInputType | true
+    }
+
+  export interface MerchantRuleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MerchantRule'], meta: { name: 'MerchantRule' } }
+    /**
+     * Find zero or one MerchantRule that matches the filter.
+     * @param {MerchantRuleFindUniqueArgs} args - Arguments to find a MerchantRule
+     * @example
+     * // Get one MerchantRule
+     * const merchantRule = await prisma.merchantRule.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MerchantRuleFindUniqueArgs>(args: SelectSubset<T, MerchantRuleFindUniqueArgs<ExtArgs>>): Prisma__MerchantRuleClient<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one MerchantRule that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {MerchantRuleFindUniqueOrThrowArgs} args - Arguments to find a MerchantRule
+     * @example
+     * // Get one MerchantRule
+     * const merchantRule = await prisma.merchantRule.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MerchantRuleFindUniqueOrThrowArgs>(args: SelectSubset<T, MerchantRuleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MerchantRuleClient<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first MerchantRule that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MerchantRuleFindFirstArgs} args - Arguments to find a MerchantRule
+     * @example
+     * // Get one MerchantRule
+     * const merchantRule = await prisma.merchantRule.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MerchantRuleFindFirstArgs>(args?: SelectSubset<T, MerchantRuleFindFirstArgs<ExtArgs>>): Prisma__MerchantRuleClient<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first MerchantRule that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MerchantRuleFindFirstOrThrowArgs} args - Arguments to find a MerchantRule
+     * @example
+     * // Get one MerchantRule
+     * const merchantRule = await prisma.merchantRule.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MerchantRuleFindFirstOrThrowArgs>(args?: SelectSubset<T, MerchantRuleFindFirstOrThrowArgs<ExtArgs>>): Prisma__MerchantRuleClient<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more MerchantRules that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MerchantRuleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MerchantRules
+     * const merchantRules = await prisma.merchantRule.findMany()
+     * 
+     * // Get first 10 MerchantRules
+     * const merchantRules = await prisma.merchantRule.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const merchantRuleWithIdOnly = await prisma.merchantRule.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MerchantRuleFindManyArgs>(args?: SelectSubset<T, MerchantRuleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a MerchantRule.
+     * @param {MerchantRuleCreateArgs} args - Arguments to create a MerchantRule.
+     * @example
+     * // Create one MerchantRule
+     * const MerchantRule = await prisma.merchantRule.create({
+     *   data: {
+     *     // ... data to create a MerchantRule
+     *   }
+     * })
+     * 
+     */
+    create<T extends MerchantRuleCreateArgs>(args: SelectSubset<T, MerchantRuleCreateArgs<ExtArgs>>): Prisma__MerchantRuleClient<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many MerchantRules.
+     * @param {MerchantRuleCreateManyArgs} args - Arguments to create many MerchantRules.
+     * @example
+     * // Create many MerchantRules
+     * const merchantRule = await prisma.merchantRule.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MerchantRuleCreateManyArgs>(args?: SelectSubset<T, MerchantRuleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MerchantRules and returns the data saved in the database.
+     * @param {MerchantRuleCreateManyAndReturnArgs} args - Arguments to create many MerchantRules.
+     * @example
+     * // Create many MerchantRules
+     * const merchantRule = await prisma.merchantRule.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MerchantRules and only return the `id`
+     * const merchantRuleWithIdOnly = await prisma.merchantRule.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MerchantRuleCreateManyAndReturnArgs>(args?: SelectSubset<T, MerchantRuleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a MerchantRule.
+     * @param {MerchantRuleDeleteArgs} args - Arguments to delete one MerchantRule.
+     * @example
+     * // Delete one MerchantRule
+     * const MerchantRule = await prisma.merchantRule.delete({
+     *   where: {
+     *     // ... filter to delete one MerchantRule
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MerchantRuleDeleteArgs>(args: SelectSubset<T, MerchantRuleDeleteArgs<ExtArgs>>): Prisma__MerchantRuleClient<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one MerchantRule.
+     * @param {MerchantRuleUpdateArgs} args - Arguments to update one MerchantRule.
+     * @example
+     * // Update one MerchantRule
+     * const merchantRule = await prisma.merchantRule.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MerchantRuleUpdateArgs>(args: SelectSubset<T, MerchantRuleUpdateArgs<ExtArgs>>): Prisma__MerchantRuleClient<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more MerchantRules.
+     * @param {MerchantRuleDeleteManyArgs} args - Arguments to filter MerchantRules to delete.
+     * @example
+     * // Delete a few MerchantRules
+     * const { count } = await prisma.merchantRule.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MerchantRuleDeleteManyArgs>(args?: SelectSubset<T, MerchantRuleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MerchantRules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MerchantRuleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MerchantRules
+     * const merchantRule = await prisma.merchantRule.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MerchantRuleUpdateManyArgs>(args: SelectSubset<T, MerchantRuleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MerchantRule.
+     * @param {MerchantRuleUpsertArgs} args - Arguments to update or create a MerchantRule.
+     * @example
+     * // Update or create a MerchantRule
+     * const merchantRule = await prisma.merchantRule.upsert({
+     *   create: {
+     *     // ... data to create a MerchantRule
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MerchantRule we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MerchantRuleUpsertArgs>(args: SelectSubset<T, MerchantRuleUpsertArgs<ExtArgs>>): Prisma__MerchantRuleClient<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of MerchantRules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MerchantRuleCountArgs} args - Arguments to filter MerchantRules to count.
+     * @example
+     * // Count the number of MerchantRules
+     * const count = await prisma.merchantRule.count({
+     *   where: {
+     *     // ... the filter for the MerchantRules we want to count
+     *   }
+     * })
+    **/
+    count<T extends MerchantRuleCountArgs>(
+      args?: Subset<T, MerchantRuleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MerchantRuleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MerchantRule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MerchantRuleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MerchantRuleAggregateArgs>(args: Subset<T, MerchantRuleAggregateArgs>): Prisma.PrismaPromise<GetMerchantRuleAggregateType<T>>
+
+    /**
+     * Group by MerchantRule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MerchantRuleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MerchantRuleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MerchantRuleGroupByArgs['orderBy'] }
+        : { orderBy?: MerchantRuleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MerchantRuleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMerchantRuleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MerchantRule model
+   */
+  readonly fields: MerchantRuleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MerchantRule.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MerchantRuleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    matches<T extends MerchantRule$matchesArgs<ExtArgs> = {}>(args?: Subset<T, MerchantRule$matchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MerchantRule model
+   */ 
+  interface MerchantRuleFieldRefs {
+    readonly id: FieldRef<"MerchantRule", 'String'>
+    readonly name: FieldRef<"MerchantRule", 'String'>
+    readonly merchantType: FieldRef<"MerchantRule", 'MerchantType'>
+    readonly paymentChannels: FieldRef<"MerchantRule", 'String[]'>
+    readonly patterns: FieldRef<"MerchantRule", 'String[]'>
+    readonly keywords: FieldRef<"MerchantRule", 'String[]'>
+    readonly mpesaPaybill: FieldRef<"MerchantRule", 'String'>
+    readonly mpesaTill: FieldRef<"MerchantRule", 'String'>
+    readonly mpesaReference: FieldRef<"MerchantRule", 'String'>
+    readonly categoryId: FieldRef<"MerchantRule", 'String'>
+    readonly confidence: FieldRef<"MerchantRule", 'Decimal'>
+    readonly isActive: FieldRef<"MerchantRule", 'Boolean'>
+    readonly amountPatterns: FieldRef<"MerchantRule", 'Json'>
+    readonly frequency: FieldRef<"MerchantRule", 'TransactionFrequency'>
+    readonly metadata: FieldRef<"MerchantRule", 'Json'>
+    readonly createdAt: FieldRef<"MerchantRule", 'DateTime'>
+    readonly updatedAt: FieldRef<"MerchantRule", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MerchantRule findUnique
+   */
+  export type MerchantRuleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+    /**
+     * Filter, which MerchantRule to fetch.
+     */
+    where: MerchantRuleWhereUniqueInput
+  }
+
+  /**
+   * MerchantRule findUniqueOrThrow
+   */
+  export type MerchantRuleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+    /**
+     * Filter, which MerchantRule to fetch.
+     */
+    where: MerchantRuleWhereUniqueInput
+  }
+
+  /**
+   * MerchantRule findFirst
+   */
+  export type MerchantRuleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+    /**
+     * Filter, which MerchantRule to fetch.
+     */
+    where?: MerchantRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MerchantRules to fetch.
+     */
+    orderBy?: MerchantRuleOrderByWithRelationInput | MerchantRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MerchantRules.
+     */
+    cursor?: MerchantRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MerchantRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MerchantRules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MerchantRules.
+     */
+    distinct?: MerchantRuleScalarFieldEnum | MerchantRuleScalarFieldEnum[]
+  }
+
+  /**
+   * MerchantRule findFirstOrThrow
+   */
+  export type MerchantRuleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+    /**
+     * Filter, which MerchantRule to fetch.
+     */
+    where?: MerchantRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MerchantRules to fetch.
+     */
+    orderBy?: MerchantRuleOrderByWithRelationInput | MerchantRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MerchantRules.
+     */
+    cursor?: MerchantRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MerchantRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MerchantRules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MerchantRules.
+     */
+    distinct?: MerchantRuleScalarFieldEnum | MerchantRuleScalarFieldEnum[]
+  }
+
+  /**
+   * MerchantRule findMany
+   */
+  export type MerchantRuleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+    /**
+     * Filter, which MerchantRules to fetch.
+     */
+    where?: MerchantRuleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MerchantRules to fetch.
+     */
+    orderBy?: MerchantRuleOrderByWithRelationInput | MerchantRuleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MerchantRules.
+     */
+    cursor?: MerchantRuleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MerchantRules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MerchantRules.
+     */
+    skip?: number
+    distinct?: MerchantRuleScalarFieldEnum | MerchantRuleScalarFieldEnum[]
+  }
+
+  /**
+   * MerchantRule create
+   */
+  export type MerchantRuleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MerchantRule.
+     */
+    data: XOR<MerchantRuleCreateInput, MerchantRuleUncheckedCreateInput>
+  }
+
+  /**
+   * MerchantRule createMany
+   */
+  export type MerchantRuleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MerchantRules.
+     */
+    data: MerchantRuleCreateManyInput | MerchantRuleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MerchantRule createManyAndReturn
+   */
+  export type MerchantRuleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many MerchantRules.
+     */
+    data: MerchantRuleCreateManyInput | MerchantRuleCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MerchantRule update
+   */
+  export type MerchantRuleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MerchantRule.
+     */
+    data: XOR<MerchantRuleUpdateInput, MerchantRuleUncheckedUpdateInput>
+    /**
+     * Choose, which MerchantRule to update.
+     */
+    where: MerchantRuleWhereUniqueInput
+  }
+
+  /**
+   * MerchantRule updateMany
+   */
+  export type MerchantRuleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MerchantRules.
+     */
+    data: XOR<MerchantRuleUpdateManyMutationInput, MerchantRuleUncheckedUpdateManyInput>
+    /**
+     * Filter which MerchantRules to update
+     */
+    where?: MerchantRuleWhereInput
+  }
+
+  /**
+   * MerchantRule upsert
+   */
+  export type MerchantRuleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MerchantRule to update in case it exists.
+     */
+    where: MerchantRuleWhereUniqueInput
+    /**
+     * In case the MerchantRule found by the `where` argument doesn't exist, create a new MerchantRule with this data.
+     */
+    create: XOR<MerchantRuleCreateInput, MerchantRuleUncheckedCreateInput>
+    /**
+     * In case the MerchantRule was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MerchantRuleUpdateInput, MerchantRuleUncheckedUpdateInput>
+  }
+
+  /**
+   * MerchantRule delete
+   */
+  export type MerchantRuleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+    /**
+     * Filter which MerchantRule to delete.
+     */
+    where: MerchantRuleWhereUniqueInput
+  }
+
+  /**
+   * MerchantRule deleteMany
+   */
+  export type MerchantRuleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MerchantRules to delete
+     */
+    where?: MerchantRuleWhereInput
+  }
+
+  /**
+   * MerchantRule.matches
+   */
+  export type MerchantRule$matchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+    where?: TransactionMatchWhereInput
+    orderBy?: TransactionMatchOrderByWithRelationInput | TransactionMatchOrderByWithRelationInput[]
+    cursor?: TransactionMatchWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransactionMatchScalarFieldEnum | TransactionMatchScalarFieldEnum[]
+  }
+
+  /**
+   * MerchantRule without action
+   */
+  export type MerchantRuleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TransactionMatch
+   */
+
+  export type AggregateTransactionMatch = {
+    _count: TransactionMatchCountAggregateOutputType | null
+    _avg: TransactionMatchAvgAggregateOutputType | null
+    _sum: TransactionMatchSumAggregateOutputType | null
+    _min: TransactionMatchMinAggregateOutputType | null
+    _max: TransactionMatchMaxAggregateOutputType | null
+  }
+
+  export type TransactionMatchAvgAggregateOutputType = {
+    confidence: Decimal | null
+  }
+
+  export type TransactionMatchSumAggregateOutputType = {
+    confidence: Decimal | null
+  }
+
+  export type TransactionMatchMinAggregateOutputType = {
+    id: string | null
+    transactionId: string | null
+    ruleId: string | null
+    confidence: Decimal | null
+    matchMethod: $Enums.MatchMethod | null
+    paymentChannel: $Enums.PaymentChannel | null
+    mpesaPaybill: string | null
+    mpesaTill: string | null
+    mpesaReference: string | null
+    wasCorrect: boolean | null
+    correctedCategoryId: string | null
+    createdAt: Date | null
+  }
+
+  export type TransactionMatchMaxAggregateOutputType = {
+    id: string | null
+    transactionId: string | null
+    ruleId: string | null
+    confidence: Decimal | null
+    matchMethod: $Enums.MatchMethod | null
+    paymentChannel: $Enums.PaymentChannel | null
+    mpesaPaybill: string | null
+    mpesaTill: string | null
+    mpesaReference: string | null
+    wasCorrect: boolean | null
+    correctedCategoryId: string | null
+    createdAt: Date | null
+  }
+
+  export type TransactionMatchCountAggregateOutputType = {
+    id: number
+    transactionId: number
+    ruleId: number
+    confidence: number
+    matchMethod: number
+    paymentChannel: number
+    mpesaPaybill: number
+    mpesaTill: number
+    mpesaReference: number
+    wasCorrect: number
+    correctedCategoryId: number
+    metadata: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type TransactionMatchAvgAggregateInputType = {
+    confidence?: true
+  }
+
+  export type TransactionMatchSumAggregateInputType = {
+    confidence?: true
+  }
+
+  export type TransactionMatchMinAggregateInputType = {
+    id?: true
+    transactionId?: true
+    ruleId?: true
+    confidence?: true
+    matchMethod?: true
+    paymentChannel?: true
+    mpesaPaybill?: true
+    mpesaTill?: true
+    mpesaReference?: true
+    wasCorrect?: true
+    correctedCategoryId?: true
+    createdAt?: true
+  }
+
+  export type TransactionMatchMaxAggregateInputType = {
+    id?: true
+    transactionId?: true
+    ruleId?: true
+    confidence?: true
+    matchMethod?: true
+    paymentChannel?: true
+    mpesaPaybill?: true
+    mpesaTill?: true
+    mpesaReference?: true
+    wasCorrect?: true
+    correctedCategoryId?: true
+    createdAt?: true
+  }
+
+  export type TransactionMatchCountAggregateInputType = {
+    id?: true
+    transactionId?: true
+    ruleId?: true
+    confidence?: true
+    matchMethod?: true
+    paymentChannel?: true
+    mpesaPaybill?: true
+    mpesaTill?: true
+    mpesaReference?: true
+    wasCorrect?: true
+    correctedCategoryId?: true
+    metadata?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type TransactionMatchAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TransactionMatch to aggregate.
+     */
+    where?: TransactionMatchWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransactionMatches to fetch.
+     */
+    orderBy?: TransactionMatchOrderByWithRelationInput | TransactionMatchOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TransactionMatchWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransactionMatches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransactionMatches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TransactionMatches
+    **/
+    _count?: true | TransactionMatchCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TransactionMatchAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TransactionMatchSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TransactionMatchMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TransactionMatchMaxAggregateInputType
+  }
+
+  export type GetTransactionMatchAggregateType<T extends TransactionMatchAggregateArgs> = {
+        [P in keyof T & keyof AggregateTransactionMatch]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTransactionMatch[P]>
+      : GetScalarType<T[P], AggregateTransactionMatch[P]>
+  }
+
+
+
+
+  export type TransactionMatchGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionMatchWhereInput
+    orderBy?: TransactionMatchOrderByWithAggregationInput | TransactionMatchOrderByWithAggregationInput[]
+    by: TransactionMatchScalarFieldEnum[] | TransactionMatchScalarFieldEnum
+    having?: TransactionMatchScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TransactionMatchCountAggregateInputType | true
+    _avg?: TransactionMatchAvgAggregateInputType
+    _sum?: TransactionMatchSumAggregateInputType
+    _min?: TransactionMatchMinAggregateInputType
+    _max?: TransactionMatchMaxAggregateInputType
+  }
+
+  export type TransactionMatchGroupByOutputType = {
+    id: string
+    transactionId: string
+    ruleId: string | null
+    confidence: Decimal
+    matchMethod: $Enums.MatchMethod
+    paymentChannel: $Enums.PaymentChannel
+    mpesaPaybill: string | null
+    mpesaTill: string | null
+    mpesaReference: string | null
+    wasCorrect: boolean | null
+    correctedCategoryId: string | null
+    metadata: JsonValue | null
+    createdAt: Date
+    _count: TransactionMatchCountAggregateOutputType | null
+    _avg: TransactionMatchAvgAggregateOutputType | null
+    _sum: TransactionMatchSumAggregateOutputType | null
+    _min: TransactionMatchMinAggregateOutputType | null
+    _max: TransactionMatchMaxAggregateOutputType | null
+  }
+
+  type GetTransactionMatchGroupByPayload<T extends TransactionMatchGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TransactionMatchGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TransactionMatchGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TransactionMatchGroupByOutputType[P]>
+            : GetScalarType<T[P], TransactionMatchGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TransactionMatchSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    transactionId?: boolean
+    ruleId?: boolean
+    confidence?: boolean
+    matchMethod?: boolean
+    paymentChannel?: boolean
+    mpesaPaybill?: boolean
+    mpesaTill?: boolean
+    mpesaReference?: boolean
+    wasCorrect?: boolean
+    correctedCategoryId?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    transaction?: boolean | TransactionDefaultArgs<ExtArgs>
+    rule?: boolean | TransactionMatch$ruleArgs<ExtArgs>
+  }, ExtArgs["result"]["transactionMatch"]>
+
+  export type TransactionMatchSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    transactionId?: boolean
+    ruleId?: boolean
+    confidence?: boolean
+    matchMethod?: boolean
+    paymentChannel?: boolean
+    mpesaPaybill?: boolean
+    mpesaTill?: boolean
+    mpesaReference?: boolean
+    wasCorrect?: boolean
+    correctedCategoryId?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    transaction?: boolean | TransactionDefaultArgs<ExtArgs>
+    rule?: boolean | TransactionMatch$ruleArgs<ExtArgs>
+  }, ExtArgs["result"]["transactionMatch"]>
+
+  export type TransactionMatchSelectScalar = {
+    id?: boolean
+    transactionId?: boolean
+    ruleId?: boolean
+    confidence?: boolean
+    matchMethod?: boolean
+    paymentChannel?: boolean
+    mpesaPaybill?: boolean
+    mpesaTill?: boolean
+    mpesaReference?: boolean
+    wasCorrect?: boolean
+    correctedCategoryId?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+  }
+
+  export type TransactionMatchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transaction?: boolean | TransactionDefaultArgs<ExtArgs>
+    rule?: boolean | TransactionMatch$ruleArgs<ExtArgs>
+  }
+  export type TransactionMatchIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transaction?: boolean | TransactionDefaultArgs<ExtArgs>
+    rule?: boolean | TransactionMatch$ruleArgs<ExtArgs>
+  }
+
+  export type $TransactionMatchPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TransactionMatch"
+    objects: {
+      transaction: Prisma.$TransactionPayload<ExtArgs>
+      rule: Prisma.$MerchantRulePayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      transactionId: string
+      ruleId: string | null
+      confidence: Prisma.Decimal
+      matchMethod: $Enums.MatchMethod
+      paymentChannel: $Enums.PaymentChannel
+      mpesaPaybill: string | null
+      mpesaTill: string | null
+      mpesaReference: string | null
+      wasCorrect: boolean | null
+      correctedCategoryId: string | null
+      metadata: Prisma.JsonValue | null
+      createdAt: Date
+    }, ExtArgs["result"]["transactionMatch"]>
+    composites: {}
+  }
+
+  type TransactionMatchGetPayload<S extends boolean | null | undefined | TransactionMatchDefaultArgs> = $Result.GetResult<Prisma.$TransactionMatchPayload, S>
+
+  type TransactionMatchCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<TransactionMatchFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: TransactionMatchCountAggregateInputType | true
+    }
+
+  export interface TransactionMatchDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TransactionMatch'], meta: { name: 'TransactionMatch' } }
+    /**
+     * Find zero or one TransactionMatch that matches the filter.
+     * @param {TransactionMatchFindUniqueArgs} args - Arguments to find a TransactionMatch
+     * @example
+     * // Get one TransactionMatch
+     * const transactionMatch = await prisma.transactionMatch.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TransactionMatchFindUniqueArgs>(args: SelectSubset<T, TransactionMatchFindUniqueArgs<ExtArgs>>): Prisma__TransactionMatchClient<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one TransactionMatch that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {TransactionMatchFindUniqueOrThrowArgs} args - Arguments to find a TransactionMatch
+     * @example
+     * // Get one TransactionMatch
+     * const transactionMatch = await prisma.transactionMatch.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TransactionMatchFindUniqueOrThrowArgs>(args: SelectSubset<T, TransactionMatchFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TransactionMatchClient<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first TransactionMatch that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionMatchFindFirstArgs} args - Arguments to find a TransactionMatch
+     * @example
+     * // Get one TransactionMatch
+     * const transactionMatch = await prisma.transactionMatch.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TransactionMatchFindFirstArgs>(args?: SelectSubset<T, TransactionMatchFindFirstArgs<ExtArgs>>): Prisma__TransactionMatchClient<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first TransactionMatch that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionMatchFindFirstOrThrowArgs} args - Arguments to find a TransactionMatch
+     * @example
+     * // Get one TransactionMatch
+     * const transactionMatch = await prisma.transactionMatch.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TransactionMatchFindFirstOrThrowArgs>(args?: SelectSubset<T, TransactionMatchFindFirstOrThrowArgs<ExtArgs>>): Prisma__TransactionMatchClient<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more TransactionMatches that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionMatchFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TransactionMatches
+     * const transactionMatches = await prisma.transactionMatch.findMany()
+     * 
+     * // Get first 10 TransactionMatches
+     * const transactionMatches = await prisma.transactionMatch.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const transactionMatchWithIdOnly = await prisma.transactionMatch.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TransactionMatchFindManyArgs>(args?: SelectSubset<T, TransactionMatchFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a TransactionMatch.
+     * @param {TransactionMatchCreateArgs} args - Arguments to create a TransactionMatch.
+     * @example
+     * // Create one TransactionMatch
+     * const TransactionMatch = await prisma.transactionMatch.create({
+     *   data: {
+     *     // ... data to create a TransactionMatch
+     *   }
+     * })
+     * 
+     */
+    create<T extends TransactionMatchCreateArgs>(args: SelectSubset<T, TransactionMatchCreateArgs<ExtArgs>>): Prisma__TransactionMatchClient<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many TransactionMatches.
+     * @param {TransactionMatchCreateManyArgs} args - Arguments to create many TransactionMatches.
+     * @example
+     * // Create many TransactionMatches
+     * const transactionMatch = await prisma.transactionMatch.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TransactionMatchCreateManyArgs>(args?: SelectSubset<T, TransactionMatchCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TransactionMatches and returns the data saved in the database.
+     * @param {TransactionMatchCreateManyAndReturnArgs} args - Arguments to create many TransactionMatches.
+     * @example
+     * // Create many TransactionMatches
+     * const transactionMatch = await prisma.transactionMatch.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TransactionMatches and only return the `id`
+     * const transactionMatchWithIdOnly = await prisma.transactionMatch.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TransactionMatchCreateManyAndReturnArgs>(args?: SelectSubset<T, TransactionMatchCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a TransactionMatch.
+     * @param {TransactionMatchDeleteArgs} args - Arguments to delete one TransactionMatch.
+     * @example
+     * // Delete one TransactionMatch
+     * const TransactionMatch = await prisma.transactionMatch.delete({
+     *   where: {
+     *     // ... filter to delete one TransactionMatch
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TransactionMatchDeleteArgs>(args: SelectSubset<T, TransactionMatchDeleteArgs<ExtArgs>>): Prisma__TransactionMatchClient<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one TransactionMatch.
+     * @param {TransactionMatchUpdateArgs} args - Arguments to update one TransactionMatch.
+     * @example
+     * // Update one TransactionMatch
+     * const transactionMatch = await prisma.transactionMatch.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TransactionMatchUpdateArgs>(args: SelectSubset<T, TransactionMatchUpdateArgs<ExtArgs>>): Prisma__TransactionMatchClient<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more TransactionMatches.
+     * @param {TransactionMatchDeleteManyArgs} args - Arguments to filter TransactionMatches to delete.
+     * @example
+     * // Delete a few TransactionMatches
+     * const { count } = await prisma.transactionMatch.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TransactionMatchDeleteManyArgs>(args?: SelectSubset<T, TransactionMatchDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TransactionMatches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionMatchUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TransactionMatches
+     * const transactionMatch = await prisma.transactionMatch.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TransactionMatchUpdateManyArgs>(args: SelectSubset<T, TransactionMatchUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TransactionMatch.
+     * @param {TransactionMatchUpsertArgs} args - Arguments to update or create a TransactionMatch.
+     * @example
+     * // Update or create a TransactionMatch
+     * const transactionMatch = await prisma.transactionMatch.upsert({
+     *   create: {
+     *     // ... data to create a TransactionMatch
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TransactionMatch we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TransactionMatchUpsertArgs>(args: SelectSubset<T, TransactionMatchUpsertArgs<ExtArgs>>): Prisma__TransactionMatchClient<$Result.GetResult<Prisma.$TransactionMatchPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of TransactionMatches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionMatchCountArgs} args - Arguments to filter TransactionMatches to count.
+     * @example
+     * // Count the number of TransactionMatches
+     * const count = await prisma.transactionMatch.count({
+     *   where: {
+     *     // ... the filter for the TransactionMatches we want to count
+     *   }
+     * })
+    **/
+    count<T extends TransactionMatchCountArgs>(
+      args?: Subset<T, TransactionMatchCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TransactionMatchCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TransactionMatch.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionMatchAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TransactionMatchAggregateArgs>(args: Subset<T, TransactionMatchAggregateArgs>): Prisma.PrismaPromise<GetTransactionMatchAggregateType<T>>
+
+    /**
+     * Group by TransactionMatch.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionMatchGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TransactionMatchGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TransactionMatchGroupByArgs['orderBy'] }
+        : { orderBy?: TransactionMatchGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TransactionMatchGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransactionMatchGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TransactionMatch model
+   */
+  readonly fields: TransactionMatchFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TransactionMatch.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TransactionMatchClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    transaction<T extends TransactionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TransactionDefaultArgs<ExtArgs>>): Prisma__TransactionClient<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    rule<T extends TransactionMatch$ruleArgs<ExtArgs> = {}>(args?: Subset<T, TransactionMatch$ruleArgs<ExtArgs>>): Prisma__MerchantRuleClient<$Result.GetResult<Prisma.$MerchantRulePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TransactionMatch model
+   */ 
+  interface TransactionMatchFieldRefs {
+    readonly id: FieldRef<"TransactionMatch", 'String'>
+    readonly transactionId: FieldRef<"TransactionMatch", 'String'>
+    readonly ruleId: FieldRef<"TransactionMatch", 'String'>
+    readonly confidence: FieldRef<"TransactionMatch", 'Decimal'>
+    readonly matchMethod: FieldRef<"TransactionMatch", 'MatchMethod'>
+    readonly paymentChannel: FieldRef<"TransactionMatch", 'PaymentChannel'>
+    readonly mpesaPaybill: FieldRef<"TransactionMatch", 'String'>
+    readonly mpesaTill: FieldRef<"TransactionMatch", 'String'>
+    readonly mpesaReference: FieldRef<"TransactionMatch", 'String'>
+    readonly wasCorrect: FieldRef<"TransactionMatch", 'Boolean'>
+    readonly correctedCategoryId: FieldRef<"TransactionMatch", 'String'>
+    readonly metadata: FieldRef<"TransactionMatch", 'Json'>
+    readonly createdAt: FieldRef<"TransactionMatch", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TransactionMatch findUnique
+   */
+  export type TransactionMatchFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+    /**
+     * Filter, which TransactionMatch to fetch.
+     */
+    where: TransactionMatchWhereUniqueInput
+  }
+
+  /**
+   * TransactionMatch findUniqueOrThrow
+   */
+  export type TransactionMatchFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+    /**
+     * Filter, which TransactionMatch to fetch.
+     */
+    where: TransactionMatchWhereUniqueInput
+  }
+
+  /**
+   * TransactionMatch findFirst
+   */
+  export type TransactionMatchFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+    /**
+     * Filter, which TransactionMatch to fetch.
+     */
+    where?: TransactionMatchWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransactionMatches to fetch.
+     */
+    orderBy?: TransactionMatchOrderByWithRelationInput | TransactionMatchOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TransactionMatches.
+     */
+    cursor?: TransactionMatchWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransactionMatches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransactionMatches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TransactionMatches.
+     */
+    distinct?: TransactionMatchScalarFieldEnum | TransactionMatchScalarFieldEnum[]
+  }
+
+  /**
+   * TransactionMatch findFirstOrThrow
+   */
+  export type TransactionMatchFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+    /**
+     * Filter, which TransactionMatch to fetch.
+     */
+    where?: TransactionMatchWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransactionMatches to fetch.
+     */
+    orderBy?: TransactionMatchOrderByWithRelationInput | TransactionMatchOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TransactionMatches.
+     */
+    cursor?: TransactionMatchWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransactionMatches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransactionMatches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TransactionMatches.
+     */
+    distinct?: TransactionMatchScalarFieldEnum | TransactionMatchScalarFieldEnum[]
+  }
+
+  /**
+   * TransactionMatch findMany
+   */
+  export type TransactionMatchFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+    /**
+     * Filter, which TransactionMatches to fetch.
+     */
+    where?: TransactionMatchWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransactionMatches to fetch.
+     */
+    orderBy?: TransactionMatchOrderByWithRelationInput | TransactionMatchOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TransactionMatches.
+     */
+    cursor?: TransactionMatchWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransactionMatches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransactionMatches.
+     */
+    skip?: number
+    distinct?: TransactionMatchScalarFieldEnum | TransactionMatchScalarFieldEnum[]
+  }
+
+  /**
+   * TransactionMatch create
+   */
+  export type TransactionMatchCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TransactionMatch.
+     */
+    data: XOR<TransactionMatchCreateInput, TransactionMatchUncheckedCreateInput>
+  }
+
+  /**
+   * TransactionMatch createMany
+   */
+  export type TransactionMatchCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TransactionMatches.
+     */
+    data: TransactionMatchCreateManyInput | TransactionMatchCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TransactionMatch createManyAndReturn
+   */
+  export type TransactionMatchCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many TransactionMatches.
+     */
+    data: TransactionMatchCreateManyInput | TransactionMatchCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TransactionMatch update
+   */
+  export type TransactionMatchUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TransactionMatch.
+     */
+    data: XOR<TransactionMatchUpdateInput, TransactionMatchUncheckedUpdateInput>
+    /**
+     * Choose, which TransactionMatch to update.
+     */
+    where: TransactionMatchWhereUniqueInput
+  }
+
+  /**
+   * TransactionMatch updateMany
+   */
+  export type TransactionMatchUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TransactionMatches.
+     */
+    data: XOR<TransactionMatchUpdateManyMutationInput, TransactionMatchUncheckedUpdateManyInput>
+    /**
+     * Filter which TransactionMatches to update
+     */
+    where?: TransactionMatchWhereInput
+  }
+
+  /**
+   * TransactionMatch upsert
+   */
+  export type TransactionMatchUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TransactionMatch to update in case it exists.
+     */
+    where: TransactionMatchWhereUniqueInput
+    /**
+     * In case the TransactionMatch found by the `where` argument doesn't exist, create a new TransactionMatch with this data.
+     */
+    create: XOR<TransactionMatchCreateInput, TransactionMatchUncheckedCreateInput>
+    /**
+     * In case the TransactionMatch was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TransactionMatchUpdateInput, TransactionMatchUncheckedUpdateInput>
+  }
+
+  /**
+   * TransactionMatch delete
+   */
+  export type TransactionMatchDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+    /**
+     * Filter which TransactionMatch to delete.
+     */
+    where: TransactionMatchWhereUniqueInput
+  }
+
+  /**
+   * TransactionMatch deleteMany
+   */
+  export type TransactionMatchDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TransactionMatches to delete
+     */
+    where?: TransactionMatchWhereInput
+  }
+
+  /**
+   * TransactionMatch.rule
+   */
+  export type TransactionMatch$ruleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MerchantRule
+     */
+    select?: MerchantRuleSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MerchantRuleInclude<ExtArgs> | null
+    where?: MerchantRuleWhereInput
+  }
+
+  /**
+   * TransactionMatch without action
+   */
+  export type TransactionMatchDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransactionMatch
+     */
+    select?: TransactionMatchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionMatchInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8803,7 +11388,12 @@ export namespace Prisma {
     type: 'type',
     categoryId: 'categoryId',
     currency: 'currency',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    paymentChannel: 'paymentChannel',
+    merchantName: 'merchantName',
+    mpesaPaybill: 'mpesaPaybill',
+    mpesaTill: 'mpesaTill',
+    mpesaReference: 'mpesaReference'
   };
 
   export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
@@ -8832,12 +11422,62 @@ export namespace Prisma {
   export type BudgetCategoryScalarFieldEnum = (typeof BudgetCategoryScalarFieldEnum)[keyof typeof BudgetCategoryScalarFieldEnum]
 
 
+  export const MerchantRuleScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    merchantType: 'merchantType',
+    paymentChannels: 'paymentChannels',
+    patterns: 'patterns',
+    keywords: 'keywords',
+    mpesaPaybill: 'mpesaPaybill',
+    mpesaTill: 'mpesaTill',
+    mpesaReference: 'mpesaReference',
+    categoryId: 'categoryId',
+    confidence: 'confidence',
+    isActive: 'isActive',
+    amountPatterns: 'amountPatterns',
+    frequency: 'frequency',
+    metadata: 'metadata',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MerchantRuleScalarFieldEnum = (typeof MerchantRuleScalarFieldEnum)[keyof typeof MerchantRuleScalarFieldEnum]
+
+
+  export const TransactionMatchScalarFieldEnum: {
+    id: 'id',
+    transactionId: 'transactionId',
+    ruleId: 'ruleId',
+    confidence: 'confidence',
+    matchMethod: 'matchMethod',
+    paymentChannel: 'paymentChannel',
+    mpesaPaybill: 'mpesaPaybill',
+    mpesaTill: 'mpesaTill',
+    mpesaReference: 'mpesaReference',
+    wasCorrect: 'wasCorrect',
+    correctedCategoryId: 'correctedCategoryId',
+    metadata: 'metadata',
+    createdAt: 'createdAt'
+  };
+
+  export type TransactionMatchScalarFieldEnum = (typeof TransactionMatchScalarFieldEnum)[keyof typeof TransactionMatchScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -8854,6 +11494,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -8977,6 +11626,69 @@ export namespace Prisma {
    * Reference to a field of type 'TransactionType[]'
    */
   export type ListEnumTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'PaymentChannel'
+   */
+  export type EnumPaymentChannelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentChannel'>
+    
+
+
+  /**
+   * Reference to a field of type 'PaymentChannel[]'
+   */
+  export type ListEnumPaymentChannelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentChannel[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'MerchantType'
+   */
+  export type EnumMerchantTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MerchantType'>
+    
+
+
+  /**
+   * Reference to a field of type 'MerchantType[]'
+   */
+  export type ListEnumMerchantTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MerchantType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'TransactionFrequency'
+   */
+  export type EnumTransactionFrequencyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionFrequency'>
+    
+
+
+  /**
+   * Reference to a field of type 'TransactionFrequency[]'
+   */
+  export type ListEnumTransactionFrequencyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransactionFrequency[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'MatchMethod'
+   */
+  export type EnumMatchMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MatchMethod'>
+    
+
+
+  /**
+   * Reference to a field of type 'MatchMethod[]'
+   */
+  export type ListEnumMatchMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MatchMethod[]'>
     
 
 
@@ -9225,6 +11937,7 @@ export namespace Prisma {
     keywords?: StringNullableFilter<"Category"> | string | null
     transactions?: TransactionListRelationFilter
     budgetCategory?: BudgetCategoryListRelationFilter
+    merchantRules?: MerchantRuleListRelationFilter
   }
 
   export type CategoryOrderByWithRelationInput = {
@@ -9234,6 +11947,7 @@ export namespace Prisma {
     keywords?: SortOrderInput | SortOrder
     transactions?: TransactionOrderByRelationAggregateInput
     budgetCategory?: BudgetCategoryOrderByRelationAggregateInput
+    merchantRules?: MerchantRuleOrderByRelationAggregateInput
   }
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -9246,6 +11960,7 @@ export namespace Prisma {
     keywords?: StringNullableFilter<"Category"> | string | null
     transactions?: TransactionListRelationFilter
     budgetCategory?: BudgetCategoryListRelationFilter
+    merchantRules?: MerchantRuleListRelationFilter
   }, "id">
 
   export type CategoryOrderByWithAggregationInput = {
@@ -9283,10 +11998,16 @@ export namespace Prisma {
     categoryId?: StringNullableFilter<"Transaction"> | string | null
     currency?: EnumCurrencyFilter<"Transaction"> | $Enums.Currency
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
+    paymentChannel?: EnumPaymentChannelNullableFilter<"Transaction"> | $Enums.PaymentChannel | null
+    merchantName?: StringNullableFilter<"Transaction"> | string | null
+    mpesaPaybill?: StringNullableFilter<"Transaction"> | string | null
+    mpesaTill?: StringNullableFilter<"Transaction"> | string | null
+    mpesaReference?: StringNullableFilter<"Transaction"> | string | null
     user?: XOR<UserRelationFilter, UserWhereInput>
     account?: XOR<AccountRelationFilter, AccountWhereInput>
     statement?: XOR<StatementNullableRelationFilter, StatementWhereInput> | null
     category?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
+    match?: XOR<TransactionMatchNullableRelationFilter, TransactionMatchWhereInput> | null
   }
 
   export type TransactionOrderByWithRelationInput = {
@@ -9301,10 +12022,16 @@ export namespace Prisma {
     categoryId?: SortOrderInput | SortOrder
     currency?: SortOrder
     createdAt?: SortOrder
+    paymentChannel?: SortOrderInput | SortOrder
+    merchantName?: SortOrderInput | SortOrder
+    mpesaPaybill?: SortOrderInput | SortOrder
+    mpesaTill?: SortOrderInput | SortOrder
+    mpesaReference?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     account?: AccountOrderByWithRelationInput
     statement?: StatementOrderByWithRelationInput
     category?: CategoryOrderByWithRelationInput
+    match?: TransactionMatchOrderByWithRelationInput
   }
 
   export type TransactionWhereUniqueInput = Prisma.AtLeast<{
@@ -9322,10 +12049,16 @@ export namespace Prisma {
     categoryId?: StringNullableFilter<"Transaction"> | string | null
     currency?: EnumCurrencyFilter<"Transaction"> | $Enums.Currency
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
+    paymentChannel?: EnumPaymentChannelNullableFilter<"Transaction"> | $Enums.PaymentChannel | null
+    merchantName?: StringNullableFilter<"Transaction"> | string | null
+    mpesaPaybill?: StringNullableFilter<"Transaction"> | string | null
+    mpesaTill?: StringNullableFilter<"Transaction"> | string | null
+    mpesaReference?: StringNullableFilter<"Transaction"> | string | null
     user?: XOR<UserRelationFilter, UserWhereInput>
     account?: XOR<AccountRelationFilter, AccountWhereInput>
     statement?: XOR<StatementNullableRelationFilter, StatementWhereInput> | null
     category?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
+    match?: XOR<TransactionMatchNullableRelationFilter, TransactionMatchWhereInput> | null
   }, "id">
 
   export type TransactionOrderByWithAggregationInput = {
@@ -9340,6 +12073,11 @@ export namespace Prisma {
     categoryId?: SortOrderInput | SortOrder
     currency?: SortOrder
     createdAt?: SortOrder
+    paymentChannel?: SortOrderInput | SortOrder
+    merchantName?: SortOrderInput | SortOrder
+    mpesaPaybill?: SortOrderInput | SortOrder
+    mpesaTill?: SortOrderInput | SortOrder
+    mpesaReference?: SortOrderInput | SortOrder
     _count?: TransactionCountOrderByAggregateInput
     _avg?: TransactionAvgOrderByAggregateInput
     _max?: TransactionMaxOrderByAggregateInput
@@ -9362,6 +12100,11 @@ export namespace Prisma {
     categoryId?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
     currency?: EnumCurrencyWithAggregatesFilter<"Transaction"> | $Enums.Currency
     createdAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
+    paymentChannel?: EnumPaymentChannelNullableWithAggregatesFilter<"Transaction"> | $Enums.PaymentChannel | null
+    merchantName?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
+    mpesaPaybill?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
+    mpesaTill?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
+    mpesaReference?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
   }
 
   export type BudgetWhereInput = {
@@ -9488,6 +12231,226 @@ export namespace Prisma {
     budgetId?: StringWithAggregatesFilter<"BudgetCategory"> | string
     categoryId?: StringWithAggregatesFilter<"BudgetCategory"> | string
     amount?: DecimalWithAggregatesFilter<"BudgetCategory"> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type MerchantRuleWhereInput = {
+    AND?: MerchantRuleWhereInput | MerchantRuleWhereInput[]
+    OR?: MerchantRuleWhereInput[]
+    NOT?: MerchantRuleWhereInput | MerchantRuleWhereInput[]
+    id?: StringFilter<"MerchantRule"> | string
+    name?: StringFilter<"MerchantRule"> | string
+    merchantType?: EnumMerchantTypeFilter<"MerchantRule"> | $Enums.MerchantType
+    paymentChannels?: StringNullableListFilter<"MerchantRule">
+    patterns?: StringNullableListFilter<"MerchantRule">
+    keywords?: StringNullableListFilter<"MerchantRule">
+    mpesaPaybill?: StringNullableFilter<"MerchantRule"> | string | null
+    mpesaTill?: StringNullableFilter<"MerchantRule"> | string | null
+    mpesaReference?: StringNullableFilter<"MerchantRule"> | string | null
+    categoryId?: StringFilter<"MerchantRule"> | string
+    confidence?: DecimalFilter<"MerchantRule"> | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFilter<"MerchantRule"> | boolean
+    amountPatterns?: JsonNullableFilter<"MerchantRule">
+    frequency?: EnumTransactionFrequencyNullableFilter<"MerchantRule"> | $Enums.TransactionFrequency | null
+    metadata?: JsonNullableFilter<"MerchantRule">
+    createdAt?: DateTimeFilter<"MerchantRule"> | Date | string
+    updatedAt?: DateTimeFilter<"MerchantRule"> | Date | string
+    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
+    matches?: TransactionMatchListRelationFilter
+  }
+
+  export type MerchantRuleOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    merchantType?: SortOrder
+    paymentChannels?: SortOrder
+    patterns?: SortOrder
+    keywords?: SortOrder
+    mpesaPaybill?: SortOrderInput | SortOrder
+    mpesaTill?: SortOrderInput | SortOrder
+    mpesaReference?: SortOrderInput | SortOrder
+    categoryId?: SortOrder
+    confidence?: SortOrder
+    isActive?: SortOrder
+    amountPatterns?: SortOrderInput | SortOrder
+    frequency?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    category?: CategoryOrderByWithRelationInput
+    matches?: TransactionMatchOrderByRelationAggregateInput
+  }
+
+  export type MerchantRuleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MerchantRuleWhereInput | MerchantRuleWhereInput[]
+    OR?: MerchantRuleWhereInput[]
+    NOT?: MerchantRuleWhereInput | MerchantRuleWhereInput[]
+    name?: StringFilter<"MerchantRule"> | string
+    merchantType?: EnumMerchantTypeFilter<"MerchantRule"> | $Enums.MerchantType
+    paymentChannels?: StringNullableListFilter<"MerchantRule">
+    patterns?: StringNullableListFilter<"MerchantRule">
+    keywords?: StringNullableListFilter<"MerchantRule">
+    mpesaPaybill?: StringNullableFilter<"MerchantRule"> | string | null
+    mpesaTill?: StringNullableFilter<"MerchantRule"> | string | null
+    mpesaReference?: StringNullableFilter<"MerchantRule"> | string | null
+    categoryId?: StringFilter<"MerchantRule"> | string
+    confidence?: DecimalFilter<"MerchantRule"> | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFilter<"MerchantRule"> | boolean
+    amountPatterns?: JsonNullableFilter<"MerchantRule">
+    frequency?: EnumTransactionFrequencyNullableFilter<"MerchantRule"> | $Enums.TransactionFrequency | null
+    metadata?: JsonNullableFilter<"MerchantRule">
+    createdAt?: DateTimeFilter<"MerchantRule"> | Date | string
+    updatedAt?: DateTimeFilter<"MerchantRule"> | Date | string
+    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
+    matches?: TransactionMatchListRelationFilter
+  }, "id">
+
+  export type MerchantRuleOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    merchantType?: SortOrder
+    paymentChannels?: SortOrder
+    patterns?: SortOrder
+    keywords?: SortOrder
+    mpesaPaybill?: SortOrderInput | SortOrder
+    mpesaTill?: SortOrderInput | SortOrder
+    mpesaReference?: SortOrderInput | SortOrder
+    categoryId?: SortOrder
+    confidence?: SortOrder
+    isActive?: SortOrder
+    amountPatterns?: SortOrderInput | SortOrder
+    frequency?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MerchantRuleCountOrderByAggregateInput
+    _avg?: MerchantRuleAvgOrderByAggregateInput
+    _max?: MerchantRuleMaxOrderByAggregateInput
+    _min?: MerchantRuleMinOrderByAggregateInput
+    _sum?: MerchantRuleSumOrderByAggregateInput
+  }
+
+  export type MerchantRuleScalarWhereWithAggregatesInput = {
+    AND?: MerchantRuleScalarWhereWithAggregatesInput | MerchantRuleScalarWhereWithAggregatesInput[]
+    OR?: MerchantRuleScalarWhereWithAggregatesInput[]
+    NOT?: MerchantRuleScalarWhereWithAggregatesInput | MerchantRuleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MerchantRule"> | string
+    name?: StringWithAggregatesFilter<"MerchantRule"> | string
+    merchantType?: EnumMerchantTypeWithAggregatesFilter<"MerchantRule"> | $Enums.MerchantType
+    paymentChannels?: StringNullableListFilter<"MerchantRule">
+    patterns?: StringNullableListFilter<"MerchantRule">
+    keywords?: StringNullableListFilter<"MerchantRule">
+    mpesaPaybill?: StringNullableWithAggregatesFilter<"MerchantRule"> | string | null
+    mpesaTill?: StringNullableWithAggregatesFilter<"MerchantRule"> | string | null
+    mpesaReference?: StringNullableWithAggregatesFilter<"MerchantRule"> | string | null
+    categoryId?: StringWithAggregatesFilter<"MerchantRule"> | string
+    confidence?: DecimalWithAggregatesFilter<"MerchantRule"> | Decimal | DecimalJsLike | number | string
+    isActive?: BoolWithAggregatesFilter<"MerchantRule"> | boolean
+    amountPatterns?: JsonNullableWithAggregatesFilter<"MerchantRule">
+    frequency?: EnumTransactionFrequencyNullableWithAggregatesFilter<"MerchantRule"> | $Enums.TransactionFrequency | null
+    metadata?: JsonNullableWithAggregatesFilter<"MerchantRule">
+    createdAt?: DateTimeWithAggregatesFilter<"MerchantRule"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MerchantRule"> | Date | string
+  }
+
+  export type TransactionMatchWhereInput = {
+    AND?: TransactionMatchWhereInput | TransactionMatchWhereInput[]
+    OR?: TransactionMatchWhereInput[]
+    NOT?: TransactionMatchWhereInput | TransactionMatchWhereInput[]
+    id?: StringFilter<"TransactionMatch"> | string
+    transactionId?: StringFilter<"TransactionMatch"> | string
+    ruleId?: StringNullableFilter<"TransactionMatch"> | string | null
+    confidence?: DecimalFilter<"TransactionMatch"> | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFilter<"TransactionMatch"> | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFilter<"TransactionMatch"> | $Enums.PaymentChannel
+    mpesaPaybill?: StringNullableFilter<"TransactionMatch"> | string | null
+    mpesaTill?: StringNullableFilter<"TransactionMatch"> | string | null
+    mpesaReference?: StringNullableFilter<"TransactionMatch"> | string | null
+    wasCorrect?: BoolNullableFilter<"TransactionMatch"> | boolean | null
+    correctedCategoryId?: StringNullableFilter<"TransactionMatch"> | string | null
+    metadata?: JsonNullableFilter<"TransactionMatch">
+    createdAt?: DateTimeFilter<"TransactionMatch"> | Date | string
+    transaction?: XOR<TransactionRelationFilter, TransactionWhereInput>
+    rule?: XOR<MerchantRuleNullableRelationFilter, MerchantRuleWhereInput> | null
+  }
+
+  export type TransactionMatchOrderByWithRelationInput = {
+    id?: SortOrder
+    transactionId?: SortOrder
+    ruleId?: SortOrderInput | SortOrder
+    confidence?: SortOrder
+    matchMethod?: SortOrder
+    paymentChannel?: SortOrder
+    mpesaPaybill?: SortOrderInput | SortOrder
+    mpesaTill?: SortOrderInput | SortOrder
+    mpesaReference?: SortOrderInput | SortOrder
+    wasCorrect?: SortOrderInput | SortOrder
+    correctedCategoryId?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    transaction?: TransactionOrderByWithRelationInput
+    rule?: MerchantRuleOrderByWithRelationInput
+  }
+
+  export type TransactionMatchWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    transactionId?: string
+    AND?: TransactionMatchWhereInput | TransactionMatchWhereInput[]
+    OR?: TransactionMatchWhereInput[]
+    NOT?: TransactionMatchWhereInput | TransactionMatchWhereInput[]
+    ruleId?: StringNullableFilter<"TransactionMatch"> | string | null
+    confidence?: DecimalFilter<"TransactionMatch"> | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFilter<"TransactionMatch"> | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFilter<"TransactionMatch"> | $Enums.PaymentChannel
+    mpesaPaybill?: StringNullableFilter<"TransactionMatch"> | string | null
+    mpesaTill?: StringNullableFilter<"TransactionMatch"> | string | null
+    mpesaReference?: StringNullableFilter<"TransactionMatch"> | string | null
+    wasCorrect?: BoolNullableFilter<"TransactionMatch"> | boolean | null
+    correctedCategoryId?: StringNullableFilter<"TransactionMatch"> | string | null
+    metadata?: JsonNullableFilter<"TransactionMatch">
+    createdAt?: DateTimeFilter<"TransactionMatch"> | Date | string
+    transaction?: XOR<TransactionRelationFilter, TransactionWhereInput>
+    rule?: XOR<MerchantRuleNullableRelationFilter, MerchantRuleWhereInput> | null
+  }, "id" | "transactionId">
+
+  export type TransactionMatchOrderByWithAggregationInput = {
+    id?: SortOrder
+    transactionId?: SortOrder
+    ruleId?: SortOrderInput | SortOrder
+    confidence?: SortOrder
+    matchMethod?: SortOrder
+    paymentChannel?: SortOrder
+    mpesaPaybill?: SortOrderInput | SortOrder
+    mpesaTill?: SortOrderInput | SortOrder
+    mpesaReference?: SortOrderInput | SortOrder
+    wasCorrect?: SortOrderInput | SortOrder
+    correctedCategoryId?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: TransactionMatchCountOrderByAggregateInput
+    _avg?: TransactionMatchAvgOrderByAggregateInput
+    _max?: TransactionMatchMaxOrderByAggregateInput
+    _min?: TransactionMatchMinOrderByAggregateInput
+    _sum?: TransactionMatchSumOrderByAggregateInput
+  }
+
+  export type TransactionMatchScalarWhereWithAggregatesInput = {
+    AND?: TransactionMatchScalarWhereWithAggregatesInput | TransactionMatchScalarWhereWithAggregatesInput[]
+    OR?: TransactionMatchScalarWhereWithAggregatesInput[]
+    NOT?: TransactionMatchScalarWhereWithAggregatesInput | TransactionMatchScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TransactionMatch"> | string
+    transactionId?: StringWithAggregatesFilter<"TransactionMatch"> | string
+    ruleId?: StringNullableWithAggregatesFilter<"TransactionMatch"> | string | null
+    confidence?: DecimalWithAggregatesFilter<"TransactionMatch"> | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodWithAggregatesFilter<"TransactionMatch"> | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelWithAggregatesFilter<"TransactionMatch"> | $Enums.PaymentChannel
+    mpesaPaybill?: StringNullableWithAggregatesFilter<"TransactionMatch"> | string | null
+    mpesaTill?: StringNullableWithAggregatesFilter<"TransactionMatch"> | string | null
+    mpesaReference?: StringNullableWithAggregatesFilter<"TransactionMatch"> | string | null
+    wasCorrect?: BoolNullableWithAggregatesFilter<"TransactionMatch"> | boolean | null
+    correctedCategoryId?: StringNullableWithAggregatesFilter<"TransactionMatch"> | string | null
+    metadata?: JsonNullableWithAggregatesFilter<"TransactionMatch">
+    createdAt?: DateTimeWithAggregatesFilter<"TransactionMatch"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -9732,6 +12695,7 @@ export namespace Prisma {
     keywords?: string | null
     transactions?: TransactionCreateNestedManyWithoutCategoryInput
     budgetCategory?: BudgetCategoryCreateNestedManyWithoutCategoryInput
+    merchantRules?: MerchantRuleCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateInput = {
@@ -9741,6 +12705,7 @@ export namespace Prisma {
     keywords?: string | null
     transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
     budgetCategory?: BudgetCategoryUncheckedCreateNestedManyWithoutCategoryInput
+    merchantRules?: MerchantRuleUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUpdateInput = {
@@ -9750,6 +12715,7 @@ export namespace Prisma {
     keywords?: NullableStringFieldUpdateOperationsInput | string | null
     transactions?: TransactionUpdateManyWithoutCategoryNestedInput
     budgetCategory?: BudgetCategoryUpdateManyWithoutCategoryNestedInput
+    merchantRules?: MerchantRuleUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateInput = {
@@ -9759,6 +12725,7 @@ export namespace Prisma {
     keywords?: NullableStringFieldUpdateOperationsInput | string | null
     transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
     budgetCategory?: BudgetCategoryUncheckedUpdateManyWithoutCategoryNestedInput
+    merchantRules?: MerchantRuleUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryCreateManyInput = {
@@ -9790,10 +12757,16 @@ export namespace Prisma {
     type: $Enums.TransactionType
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
     user: UserCreateNestedOneWithoutTransactionsInput
     account: AccountCreateNestedOneWithoutTransactionsInput
     statement?: StatementCreateNestedOneWithoutTransactionsInput
     category?: CategoryCreateNestedOneWithoutTransactionsInput
+    match?: TransactionMatchCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionUncheckedCreateInput = {
@@ -9808,6 +12781,12 @@ export namespace Prisma {
     categoryId?: string | null
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    match?: TransactionMatchUncheckedCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionUpdateInput = {
@@ -9818,10 +12797,16 @@ export namespace Prisma {
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     account?: AccountUpdateOneRequiredWithoutTransactionsNestedInput
     statement?: StatementUpdateOneWithoutTransactionsNestedInput
     category?: CategoryUpdateOneWithoutTransactionsNestedInput
+    match?: TransactionMatchUpdateOneWithoutTransactionNestedInput
   }
 
   export type TransactionUncheckedUpdateInput = {
@@ -9836,6 +12821,12 @@ export namespace Prisma {
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    match?: TransactionMatchUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
   export type TransactionCreateManyInput = {
@@ -9850,6 +12841,11 @@ export namespace Prisma {
     categoryId?: string | null
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
   }
 
   export type TransactionUpdateManyMutationInput = {
@@ -9860,6 +12856,11 @@ export namespace Prisma {
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TransactionUncheckedUpdateManyInput = {
@@ -9874,6 +12875,11 @@ export namespace Prisma {
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BudgetCreateInput = {
@@ -9994,6 +13000,259 @@ export namespace Prisma {
     budgetId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  }
+
+  export type MerchantRuleCreateInput = {
+    id?: string
+    name: string
+    merchantType: $Enums.MerchantType
+    paymentChannels?: MerchantRuleCreatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleCreatepatternsInput | string[]
+    keywords?: MerchantRuleCreatekeywordsInput | string[]
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    confidence: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    category: CategoryCreateNestedOneWithoutMerchantRulesInput
+    matches?: TransactionMatchCreateNestedManyWithoutRuleInput
+  }
+
+  export type MerchantRuleUncheckedCreateInput = {
+    id?: string
+    name: string
+    merchantType: $Enums.MerchantType
+    paymentChannels?: MerchantRuleCreatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleCreatepatternsInput | string[]
+    keywords?: MerchantRuleCreatekeywordsInput | string[]
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    categoryId: string
+    confidence: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    matches?: TransactionMatchUncheckedCreateNestedManyWithoutRuleInput
+  }
+
+  export type MerchantRuleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    merchantType?: EnumMerchantTypeFieldUpdateOperationsInput | $Enums.MerchantType
+    paymentChannels?: MerchantRuleUpdatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleUpdatepatternsInput | string[]
+    keywords?: MerchantRuleUpdatekeywordsInput | string[]
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: NullableEnumTransactionFrequencyFieldUpdateOperationsInput | $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: CategoryUpdateOneRequiredWithoutMerchantRulesNestedInput
+    matches?: TransactionMatchUpdateManyWithoutRuleNestedInput
+  }
+
+  export type MerchantRuleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    merchantType?: EnumMerchantTypeFieldUpdateOperationsInput | $Enums.MerchantType
+    paymentChannels?: MerchantRuleUpdatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleUpdatepatternsInput | string[]
+    keywords?: MerchantRuleUpdatekeywordsInput | string[]
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: StringFieldUpdateOperationsInput | string
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: NullableEnumTransactionFrequencyFieldUpdateOperationsInput | $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    matches?: TransactionMatchUncheckedUpdateManyWithoutRuleNestedInput
+  }
+
+  export type MerchantRuleCreateManyInput = {
+    id?: string
+    name: string
+    merchantType: $Enums.MerchantType
+    paymentChannels?: MerchantRuleCreatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleCreatepatternsInput | string[]
+    keywords?: MerchantRuleCreatekeywordsInput | string[]
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    categoryId: string
+    confidence: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MerchantRuleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    merchantType?: EnumMerchantTypeFieldUpdateOperationsInput | $Enums.MerchantType
+    paymentChannels?: MerchantRuleUpdatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleUpdatepatternsInput | string[]
+    keywords?: MerchantRuleUpdatekeywordsInput | string[]
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: NullableEnumTransactionFrequencyFieldUpdateOperationsInput | $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MerchantRuleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    merchantType?: EnumMerchantTypeFieldUpdateOperationsInput | $Enums.MerchantType
+    paymentChannels?: MerchantRuleUpdatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleUpdatepatternsInput | string[]
+    keywords?: MerchantRuleUpdatekeywordsInput | string[]
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: StringFieldUpdateOperationsInput | string
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: NullableEnumTransactionFrequencyFieldUpdateOperationsInput | $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransactionMatchCreateInput = {
+    id?: string
+    confidence: Decimal | DecimalJsLike | number | string
+    matchMethod: $Enums.MatchMethod
+    paymentChannel: $Enums.PaymentChannel
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    wasCorrect?: boolean | null
+    correctedCategoryId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    transaction: TransactionCreateNestedOneWithoutMatchInput
+    rule?: MerchantRuleCreateNestedOneWithoutMatchesInput
+  }
+
+  export type TransactionMatchUncheckedCreateInput = {
+    id?: string
+    transactionId: string
+    ruleId?: string | null
+    confidence: Decimal | DecimalJsLike | number | string
+    matchMethod: $Enums.MatchMethod
+    paymentChannel: $Enums.PaymentChannel
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    wasCorrect?: boolean | null
+    correctedCategoryId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type TransactionMatchUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFieldUpdateOperationsInput | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    wasCorrect?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    correctedCategoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transaction?: TransactionUpdateOneRequiredWithoutMatchNestedInput
+    rule?: MerchantRuleUpdateOneWithoutMatchesNestedInput
+  }
+
+  export type TransactionMatchUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transactionId?: StringFieldUpdateOperationsInput | string
+    ruleId?: NullableStringFieldUpdateOperationsInput | string | null
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFieldUpdateOperationsInput | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    wasCorrect?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    correctedCategoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransactionMatchCreateManyInput = {
+    id?: string
+    transactionId: string
+    ruleId?: string | null
+    confidence: Decimal | DecimalJsLike | number | string
+    matchMethod: $Enums.MatchMethod
+    paymentChannel: $Enums.PaymentChannel
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    wasCorrect?: boolean | null
+    correctedCategoryId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type TransactionMatchUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFieldUpdateOperationsInput | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    wasCorrect?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    correctedCategoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransactionMatchUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transactionId?: StringFieldUpdateOperationsInput | string
+    ruleId?: NullableStringFieldUpdateOperationsInput | string | null
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFieldUpdateOperationsInput | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    wasCorrect?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    correctedCategoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -10369,7 +13628,17 @@ export namespace Prisma {
     none?: BudgetCategoryWhereInput
   }
 
+  export type MerchantRuleListRelationFilter = {
+    every?: MerchantRuleWhereInput
+    some?: MerchantRuleWhereInput
+    none?: MerchantRuleWhereInput
+  }
+
   export type BudgetCategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MerchantRuleOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10411,6 +13680,13 @@ export namespace Prisma {
     not?: NestedEnumTransactionTypeFilter<$PrismaModel> | $Enums.TransactionType
   }
 
+  export type EnumPaymentChannelNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentChannel | EnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    in?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumPaymentChannelNullableFilter<$PrismaModel> | $Enums.PaymentChannel | null
+  }
+
   export type StatementNullableRelationFilter = {
     is?: StatementWhereInput | null
     isNot?: StatementWhereInput | null
@@ -10419,6 +13695,11 @@ export namespace Prisma {
   export type CategoryNullableRelationFilter = {
     is?: CategoryWhereInput | null
     isNot?: CategoryWhereInput | null
+  }
+
+  export type TransactionMatchNullableRelationFilter = {
+    is?: TransactionMatchWhereInput | null
+    isNot?: TransactionMatchWhereInput | null
   }
 
   export type TransactionCountOrderByAggregateInput = {
@@ -10433,6 +13714,11 @@ export namespace Prisma {
     categoryId?: SortOrder
     currency?: SortOrder
     createdAt?: SortOrder
+    paymentChannel?: SortOrder
+    merchantName?: SortOrder
+    mpesaPaybill?: SortOrder
+    mpesaTill?: SortOrder
+    mpesaReference?: SortOrder
   }
 
   export type TransactionAvgOrderByAggregateInput = {
@@ -10451,6 +13737,11 @@ export namespace Prisma {
     categoryId?: SortOrder
     currency?: SortOrder
     createdAt?: SortOrder
+    paymentChannel?: SortOrder
+    merchantName?: SortOrder
+    mpesaPaybill?: SortOrder
+    mpesaTill?: SortOrder
+    mpesaReference?: SortOrder
   }
 
   export type TransactionMinOrderByAggregateInput = {
@@ -10465,6 +13756,11 @@ export namespace Prisma {
     categoryId?: SortOrder
     currency?: SortOrder
     createdAt?: SortOrder
+    paymentChannel?: SortOrder
+    merchantName?: SortOrder
+    mpesaPaybill?: SortOrder
+    mpesaTill?: SortOrder
+    mpesaReference?: SortOrder
   }
 
   export type TransactionSumOrderByAggregateInput = {
@@ -10479,6 +13775,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTransactionTypeFilter<$PrismaModel>
     _max?: NestedEnumTransactionTypeFilter<$PrismaModel>
+  }
+
+  export type EnumPaymentChannelNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentChannel | EnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    in?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumPaymentChannelNullableWithAggregatesFilter<$PrismaModel> | $Enums.PaymentChannel | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumPaymentChannelNullableFilter<$PrismaModel>
+    _max?: NestedEnumPaymentChannelNullableFilter<$PrismaModel>
   }
 
   export type BudgetCountOrderByAggregateInput = {
@@ -10561,6 +13867,274 @@ export namespace Prisma {
 
   export type BudgetCategorySumOrderByAggregateInput = {
     amount?: SortOrder
+  }
+
+  export type EnumMerchantTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.MerchantType | EnumMerchantTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MerchantType[] | ListEnumMerchantTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MerchantType[] | ListEnumMerchantTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMerchantTypeFilter<$PrismaModel> | $Enums.MerchantType
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+  export type JsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type EnumTransactionFrequencyNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransactionFrequency | EnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransactionFrequency[] | ListEnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransactionFrequency[] | ListEnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransactionFrequencyNullableFilter<$PrismaModel> | $Enums.TransactionFrequency | null
+  }
+
+  export type TransactionMatchListRelationFilter = {
+    every?: TransactionMatchWhereInput
+    some?: TransactionMatchWhereInput
+    none?: TransactionMatchWhereInput
+  }
+
+  export type TransactionMatchOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MerchantRuleCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    merchantType?: SortOrder
+    paymentChannels?: SortOrder
+    patterns?: SortOrder
+    keywords?: SortOrder
+    mpesaPaybill?: SortOrder
+    mpesaTill?: SortOrder
+    mpesaReference?: SortOrder
+    categoryId?: SortOrder
+    confidence?: SortOrder
+    isActive?: SortOrder
+    amountPatterns?: SortOrder
+    frequency?: SortOrder
+    metadata?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MerchantRuleAvgOrderByAggregateInput = {
+    confidence?: SortOrder
+  }
+
+  export type MerchantRuleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    merchantType?: SortOrder
+    mpesaPaybill?: SortOrder
+    mpesaTill?: SortOrder
+    mpesaReference?: SortOrder
+    categoryId?: SortOrder
+    confidence?: SortOrder
+    isActive?: SortOrder
+    frequency?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MerchantRuleMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    merchantType?: SortOrder
+    mpesaPaybill?: SortOrder
+    mpesaTill?: SortOrder
+    mpesaReference?: SortOrder
+    categoryId?: SortOrder
+    confidence?: SortOrder
+    isActive?: SortOrder
+    frequency?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MerchantRuleSumOrderByAggregateInput = {
+    confidence?: SortOrder
+  }
+
+  export type EnumMerchantTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MerchantType | EnumMerchantTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MerchantType[] | ListEnumMerchantTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MerchantType[] | ListEnumMerchantTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMerchantTypeWithAggregatesFilter<$PrismaModel> | $Enums.MerchantType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMerchantTypeFilter<$PrismaModel>
+    _max?: NestedEnumMerchantTypeFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTransactionFrequencyNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransactionFrequency | EnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransactionFrequency[] | ListEnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransactionFrequency[] | ListEnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransactionFrequencyNullableWithAggregatesFilter<$PrismaModel> | $Enums.TransactionFrequency | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTransactionFrequencyNullableFilter<$PrismaModel>
+    _max?: NestedEnumTransactionFrequencyNullableFilter<$PrismaModel>
+  }
+
+  export type EnumMatchMethodFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchMethod | EnumMatchMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchMethod[] | ListEnumMatchMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchMethod[] | ListEnumMatchMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchMethodFilter<$PrismaModel> | $Enums.MatchMethod
+  }
+
+  export type EnumPaymentChannelFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentChannel | EnumPaymentChannelFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentChannelFilter<$PrismaModel> | $Enums.PaymentChannel
+  }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type TransactionRelationFilter = {
+    is?: TransactionWhereInput
+    isNot?: TransactionWhereInput
+  }
+
+  export type MerchantRuleNullableRelationFilter = {
+    is?: MerchantRuleWhereInput | null
+    isNot?: MerchantRuleWhereInput | null
+  }
+
+  export type TransactionMatchCountOrderByAggregateInput = {
+    id?: SortOrder
+    transactionId?: SortOrder
+    ruleId?: SortOrder
+    confidence?: SortOrder
+    matchMethod?: SortOrder
+    paymentChannel?: SortOrder
+    mpesaPaybill?: SortOrder
+    mpesaTill?: SortOrder
+    mpesaReference?: SortOrder
+    wasCorrect?: SortOrder
+    correctedCategoryId?: SortOrder
+    metadata?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TransactionMatchAvgOrderByAggregateInput = {
+    confidence?: SortOrder
+  }
+
+  export type TransactionMatchMaxOrderByAggregateInput = {
+    id?: SortOrder
+    transactionId?: SortOrder
+    ruleId?: SortOrder
+    confidence?: SortOrder
+    matchMethod?: SortOrder
+    paymentChannel?: SortOrder
+    mpesaPaybill?: SortOrder
+    mpesaTill?: SortOrder
+    mpesaReference?: SortOrder
+    wasCorrect?: SortOrder
+    correctedCategoryId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TransactionMatchMinOrderByAggregateInput = {
+    id?: SortOrder
+    transactionId?: SortOrder
+    ruleId?: SortOrder
+    confidence?: SortOrder
+    matchMethod?: SortOrder
+    paymentChannel?: SortOrder
+    mpesaPaybill?: SortOrder
+    mpesaTill?: SortOrder
+    mpesaReference?: SortOrder
+    wasCorrect?: SortOrder
+    correctedCategoryId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TransactionMatchSumOrderByAggregateInput = {
+    confidence?: SortOrder
+  }
+
+  export type EnumMatchMethodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchMethod | EnumMatchMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchMethod[] | ListEnumMatchMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchMethod[] | ListEnumMatchMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchMethodWithAggregatesFilter<$PrismaModel> | $Enums.MatchMethod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMatchMethodFilter<$PrismaModel>
+    _max?: NestedEnumMatchMethodFilter<$PrismaModel>
+  }
+
+  export type EnumPaymentChannelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentChannel | EnumPaymentChannelFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentChannelWithAggregatesFilter<$PrismaModel> | $Enums.PaymentChannel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPaymentChannelFilter<$PrismaModel>
+    _max?: NestedEnumPaymentChannelFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -10953,6 +14527,13 @@ export namespace Prisma {
     connect?: BudgetCategoryWhereUniqueInput | BudgetCategoryWhereUniqueInput[]
   }
 
+  export type MerchantRuleCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<MerchantRuleCreateWithoutCategoryInput, MerchantRuleUncheckedCreateWithoutCategoryInput> | MerchantRuleCreateWithoutCategoryInput[] | MerchantRuleUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MerchantRuleCreateOrConnectWithoutCategoryInput | MerchantRuleCreateOrConnectWithoutCategoryInput[]
+    createMany?: MerchantRuleCreateManyCategoryInputEnvelope
+    connect?: MerchantRuleWhereUniqueInput | MerchantRuleWhereUniqueInput[]
+  }
+
   export type TransactionUncheckedCreateNestedManyWithoutCategoryInput = {
     create?: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput> | TransactionCreateWithoutCategoryInput[] | TransactionUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: TransactionCreateOrConnectWithoutCategoryInput | TransactionCreateOrConnectWithoutCategoryInput[]
@@ -10965,6 +14546,13 @@ export namespace Prisma {
     connectOrCreate?: BudgetCategoryCreateOrConnectWithoutCategoryInput | BudgetCategoryCreateOrConnectWithoutCategoryInput[]
     createMany?: BudgetCategoryCreateManyCategoryInputEnvelope
     connect?: BudgetCategoryWhereUniqueInput | BudgetCategoryWhereUniqueInput[]
+  }
+
+  export type MerchantRuleUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<MerchantRuleCreateWithoutCategoryInput, MerchantRuleUncheckedCreateWithoutCategoryInput> | MerchantRuleCreateWithoutCategoryInput[] | MerchantRuleUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MerchantRuleCreateOrConnectWithoutCategoryInput | MerchantRuleCreateOrConnectWithoutCategoryInput[]
+    createMany?: MerchantRuleCreateManyCategoryInputEnvelope
+    connect?: MerchantRuleWhereUniqueInput | MerchantRuleWhereUniqueInput[]
   }
 
   export type EnumCategoryTypeFieldUpdateOperationsInput = {
@@ -10999,6 +14587,20 @@ export namespace Prisma {
     deleteMany?: BudgetCategoryScalarWhereInput | BudgetCategoryScalarWhereInput[]
   }
 
+  export type MerchantRuleUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<MerchantRuleCreateWithoutCategoryInput, MerchantRuleUncheckedCreateWithoutCategoryInput> | MerchantRuleCreateWithoutCategoryInput[] | MerchantRuleUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MerchantRuleCreateOrConnectWithoutCategoryInput | MerchantRuleCreateOrConnectWithoutCategoryInput[]
+    upsert?: MerchantRuleUpsertWithWhereUniqueWithoutCategoryInput | MerchantRuleUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: MerchantRuleCreateManyCategoryInputEnvelope
+    set?: MerchantRuleWhereUniqueInput | MerchantRuleWhereUniqueInput[]
+    disconnect?: MerchantRuleWhereUniqueInput | MerchantRuleWhereUniqueInput[]
+    delete?: MerchantRuleWhereUniqueInput | MerchantRuleWhereUniqueInput[]
+    connect?: MerchantRuleWhereUniqueInput | MerchantRuleWhereUniqueInput[]
+    update?: MerchantRuleUpdateWithWhereUniqueWithoutCategoryInput | MerchantRuleUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: MerchantRuleUpdateManyWithWhereWithoutCategoryInput | MerchantRuleUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: MerchantRuleScalarWhereInput | MerchantRuleScalarWhereInput[]
+  }
+
   export type TransactionUncheckedUpdateManyWithoutCategoryNestedInput = {
     create?: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput> | TransactionCreateWithoutCategoryInput[] | TransactionUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: TransactionCreateOrConnectWithoutCategoryInput | TransactionCreateOrConnectWithoutCategoryInput[]
@@ -11027,6 +14629,20 @@ export namespace Prisma {
     deleteMany?: BudgetCategoryScalarWhereInput | BudgetCategoryScalarWhereInput[]
   }
 
+  export type MerchantRuleUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<MerchantRuleCreateWithoutCategoryInput, MerchantRuleUncheckedCreateWithoutCategoryInput> | MerchantRuleCreateWithoutCategoryInput[] | MerchantRuleUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MerchantRuleCreateOrConnectWithoutCategoryInput | MerchantRuleCreateOrConnectWithoutCategoryInput[]
+    upsert?: MerchantRuleUpsertWithWhereUniqueWithoutCategoryInput | MerchantRuleUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: MerchantRuleCreateManyCategoryInputEnvelope
+    set?: MerchantRuleWhereUniqueInput | MerchantRuleWhereUniqueInput[]
+    disconnect?: MerchantRuleWhereUniqueInput | MerchantRuleWhereUniqueInput[]
+    delete?: MerchantRuleWhereUniqueInput | MerchantRuleWhereUniqueInput[]
+    connect?: MerchantRuleWhereUniqueInput | MerchantRuleWhereUniqueInput[]
+    update?: MerchantRuleUpdateWithWhereUniqueWithoutCategoryInput | MerchantRuleUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: MerchantRuleUpdateManyWithWhereWithoutCategoryInput | MerchantRuleUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: MerchantRuleScalarWhereInput | MerchantRuleScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutTransactionsInput = {
     create?: XOR<UserCreateWithoutTransactionsInput, UserUncheckedCreateWithoutTransactionsInput>
     connectOrCreate?: UserCreateOrConnectWithoutTransactionsInput
@@ -11051,8 +14667,24 @@ export namespace Prisma {
     connect?: CategoryWhereUniqueInput
   }
 
+  export type TransactionMatchCreateNestedOneWithoutTransactionInput = {
+    create?: XOR<TransactionMatchCreateWithoutTransactionInput, TransactionMatchUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: TransactionMatchCreateOrConnectWithoutTransactionInput
+    connect?: TransactionMatchWhereUniqueInput
+  }
+
+  export type TransactionMatchUncheckedCreateNestedOneWithoutTransactionInput = {
+    create?: XOR<TransactionMatchCreateWithoutTransactionInput, TransactionMatchUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: TransactionMatchCreateOrConnectWithoutTransactionInput
+    connect?: TransactionMatchWhereUniqueInput
+  }
+
   export type EnumTransactionTypeFieldUpdateOperationsInput = {
     set?: $Enums.TransactionType
+  }
+
+  export type NullableEnumPaymentChannelFieldUpdateOperationsInput = {
+    set?: $Enums.PaymentChannel | null
   }
 
   export type UserUpdateOneRequiredWithoutTransactionsNestedInput = {
@@ -11089,6 +14721,26 @@ export namespace Prisma {
     delete?: CategoryWhereInput | boolean
     connect?: CategoryWhereUniqueInput
     update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutTransactionsInput, CategoryUpdateWithoutTransactionsInput>, CategoryUncheckedUpdateWithoutTransactionsInput>
+  }
+
+  export type TransactionMatchUpdateOneWithoutTransactionNestedInput = {
+    create?: XOR<TransactionMatchCreateWithoutTransactionInput, TransactionMatchUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: TransactionMatchCreateOrConnectWithoutTransactionInput
+    upsert?: TransactionMatchUpsertWithoutTransactionInput
+    disconnect?: TransactionMatchWhereInput | boolean
+    delete?: TransactionMatchWhereInput | boolean
+    connect?: TransactionMatchWhereUniqueInput
+    update?: XOR<XOR<TransactionMatchUpdateToOneWithWhereWithoutTransactionInput, TransactionMatchUpdateWithoutTransactionInput>, TransactionMatchUncheckedUpdateWithoutTransactionInput>
+  }
+
+  export type TransactionMatchUncheckedUpdateOneWithoutTransactionNestedInput = {
+    create?: XOR<TransactionMatchCreateWithoutTransactionInput, TransactionMatchUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: TransactionMatchCreateOrConnectWithoutTransactionInput
+    upsert?: TransactionMatchUpsertWithoutTransactionInput
+    disconnect?: TransactionMatchWhereInput | boolean
+    delete?: TransactionMatchWhereInput | boolean
+    connect?: TransactionMatchWhereUniqueInput
+    update?: XOR<XOR<TransactionMatchUpdateToOneWithWhereWithoutTransactionInput, TransactionMatchUpdateWithoutTransactionInput>, TransactionMatchUncheckedUpdateWithoutTransactionInput>
   }
 
   export type UserCreateNestedOneWithoutBudgetsInput = {
@@ -11173,6 +14825,139 @@ export namespace Prisma {
     upsert?: CategoryUpsertWithoutBudgetCategoryInput
     connect?: CategoryWhereUniqueInput
     update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutBudgetCategoryInput, CategoryUpdateWithoutBudgetCategoryInput>, CategoryUncheckedUpdateWithoutBudgetCategoryInput>
+  }
+
+  export type MerchantRuleCreatepaymentChannelsInput = {
+    set: string[]
+  }
+
+  export type MerchantRuleCreatepatternsInput = {
+    set: string[]
+  }
+
+  export type MerchantRuleCreatekeywordsInput = {
+    set: string[]
+  }
+
+  export type CategoryCreateNestedOneWithoutMerchantRulesInput = {
+    create?: XOR<CategoryCreateWithoutMerchantRulesInput, CategoryUncheckedCreateWithoutMerchantRulesInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutMerchantRulesInput
+    connect?: CategoryWhereUniqueInput
+  }
+
+  export type TransactionMatchCreateNestedManyWithoutRuleInput = {
+    create?: XOR<TransactionMatchCreateWithoutRuleInput, TransactionMatchUncheckedCreateWithoutRuleInput> | TransactionMatchCreateWithoutRuleInput[] | TransactionMatchUncheckedCreateWithoutRuleInput[]
+    connectOrCreate?: TransactionMatchCreateOrConnectWithoutRuleInput | TransactionMatchCreateOrConnectWithoutRuleInput[]
+    createMany?: TransactionMatchCreateManyRuleInputEnvelope
+    connect?: TransactionMatchWhereUniqueInput | TransactionMatchWhereUniqueInput[]
+  }
+
+  export type TransactionMatchUncheckedCreateNestedManyWithoutRuleInput = {
+    create?: XOR<TransactionMatchCreateWithoutRuleInput, TransactionMatchUncheckedCreateWithoutRuleInput> | TransactionMatchCreateWithoutRuleInput[] | TransactionMatchUncheckedCreateWithoutRuleInput[]
+    connectOrCreate?: TransactionMatchCreateOrConnectWithoutRuleInput | TransactionMatchCreateOrConnectWithoutRuleInput[]
+    createMany?: TransactionMatchCreateManyRuleInputEnvelope
+    connect?: TransactionMatchWhereUniqueInput | TransactionMatchWhereUniqueInput[]
+  }
+
+  export type EnumMerchantTypeFieldUpdateOperationsInput = {
+    set?: $Enums.MerchantType
+  }
+
+  export type MerchantRuleUpdatepaymentChannelsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type MerchantRuleUpdatepatternsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type MerchantRuleUpdatekeywordsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableEnumTransactionFrequencyFieldUpdateOperationsInput = {
+    set?: $Enums.TransactionFrequency | null
+  }
+
+  export type CategoryUpdateOneRequiredWithoutMerchantRulesNestedInput = {
+    create?: XOR<CategoryCreateWithoutMerchantRulesInput, CategoryUncheckedCreateWithoutMerchantRulesInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutMerchantRulesInput
+    upsert?: CategoryUpsertWithoutMerchantRulesInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutMerchantRulesInput, CategoryUpdateWithoutMerchantRulesInput>, CategoryUncheckedUpdateWithoutMerchantRulesInput>
+  }
+
+  export type TransactionMatchUpdateManyWithoutRuleNestedInput = {
+    create?: XOR<TransactionMatchCreateWithoutRuleInput, TransactionMatchUncheckedCreateWithoutRuleInput> | TransactionMatchCreateWithoutRuleInput[] | TransactionMatchUncheckedCreateWithoutRuleInput[]
+    connectOrCreate?: TransactionMatchCreateOrConnectWithoutRuleInput | TransactionMatchCreateOrConnectWithoutRuleInput[]
+    upsert?: TransactionMatchUpsertWithWhereUniqueWithoutRuleInput | TransactionMatchUpsertWithWhereUniqueWithoutRuleInput[]
+    createMany?: TransactionMatchCreateManyRuleInputEnvelope
+    set?: TransactionMatchWhereUniqueInput | TransactionMatchWhereUniqueInput[]
+    disconnect?: TransactionMatchWhereUniqueInput | TransactionMatchWhereUniqueInput[]
+    delete?: TransactionMatchWhereUniqueInput | TransactionMatchWhereUniqueInput[]
+    connect?: TransactionMatchWhereUniqueInput | TransactionMatchWhereUniqueInput[]
+    update?: TransactionMatchUpdateWithWhereUniqueWithoutRuleInput | TransactionMatchUpdateWithWhereUniqueWithoutRuleInput[]
+    updateMany?: TransactionMatchUpdateManyWithWhereWithoutRuleInput | TransactionMatchUpdateManyWithWhereWithoutRuleInput[]
+    deleteMany?: TransactionMatchScalarWhereInput | TransactionMatchScalarWhereInput[]
+  }
+
+  export type TransactionMatchUncheckedUpdateManyWithoutRuleNestedInput = {
+    create?: XOR<TransactionMatchCreateWithoutRuleInput, TransactionMatchUncheckedCreateWithoutRuleInput> | TransactionMatchCreateWithoutRuleInput[] | TransactionMatchUncheckedCreateWithoutRuleInput[]
+    connectOrCreate?: TransactionMatchCreateOrConnectWithoutRuleInput | TransactionMatchCreateOrConnectWithoutRuleInput[]
+    upsert?: TransactionMatchUpsertWithWhereUniqueWithoutRuleInput | TransactionMatchUpsertWithWhereUniqueWithoutRuleInput[]
+    createMany?: TransactionMatchCreateManyRuleInputEnvelope
+    set?: TransactionMatchWhereUniqueInput | TransactionMatchWhereUniqueInput[]
+    disconnect?: TransactionMatchWhereUniqueInput | TransactionMatchWhereUniqueInput[]
+    delete?: TransactionMatchWhereUniqueInput | TransactionMatchWhereUniqueInput[]
+    connect?: TransactionMatchWhereUniqueInput | TransactionMatchWhereUniqueInput[]
+    update?: TransactionMatchUpdateWithWhereUniqueWithoutRuleInput | TransactionMatchUpdateWithWhereUniqueWithoutRuleInput[]
+    updateMany?: TransactionMatchUpdateManyWithWhereWithoutRuleInput | TransactionMatchUpdateManyWithWhereWithoutRuleInput[]
+    deleteMany?: TransactionMatchScalarWhereInput | TransactionMatchScalarWhereInput[]
+  }
+
+  export type TransactionCreateNestedOneWithoutMatchInput = {
+    create?: XOR<TransactionCreateWithoutMatchInput, TransactionUncheckedCreateWithoutMatchInput>
+    connectOrCreate?: TransactionCreateOrConnectWithoutMatchInput
+    connect?: TransactionWhereUniqueInput
+  }
+
+  export type MerchantRuleCreateNestedOneWithoutMatchesInput = {
+    create?: XOR<MerchantRuleCreateWithoutMatchesInput, MerchantRuleUncheckedCreateWithoutMatchesInput>
+    connectOrCreate?: MerchantRuleCreateOrConnectWithoutMatchesInput
+    connect?: MerchantRuleWhereUniqueInput
+  }
+
+  export type EnumMatchMethodFieldUpdateOperationsInput = {
+    set?: $Enums.MatchMethod
+  }
+
+  export type EnumPaymentChannelFieldUpdateOperationsInput = {
+    set?: $Enums.PaymentChannel
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
+  export type TransactionUpdateOneRequiredWithoutMatchNestedInput = {
+    create?: XOR<TransactionCreateWithoutMatchInput, TransactionUncheckedCreateWithoutMatchInput>
+    connectOrCreate?: TransactionCreateOrConnectWithoutMatchInput
+    upsert?: TransactionUpsertWithoutMatchInput
+    connect?: TransactionWhereUniqueInput
+    update?: XOR<XOR<TransactionUpdateToOneWithWhereWithoutMatchInput, TransactionUpdateWithoutMatchInput>, TransactionUncheckedUpdateWithoutMatchInput>
+  }
+
+  export type MerchantRuleUpdateOneWithoutMatchesNestedInput = {
+    create?: XOR<MerchantRuleCreateWithoutMatchesInput, MerchantRuleUncheckedCreateWithoutMatchesInput>
+    connectOrCreate?: MerchantRuleCreateOrConnectWithoutMatchesInput
+    upsert?: MerchantRuleUpsertWithoutMatchesInput
+    disconnect?: MerchantRuleWhereInput | boolean
+    delete?: MerchantRuleWhereInput | boolean
+    connect?: MerchantRuleWhereUniqueInput
+    update?: XOR<XOR<MerchantRuleUpdateToOneWithWhereWithoutMatchesInput, MerchantRuleUpdateWithoutMatchesInput>, MerchantRuleUncheckedUpdateWithoutMatchesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -11424,6 +15209,13 @@ export namespace Prisma {
     not?: NestedEnumTransactionTypeFilter<$PrismaModel> | $Enums.TransactionType
   }
 
+  export type NestedEnumPaymentChannelNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentChannel | EnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    in?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumPaymentChannelNullableFilter<$PrismaModel> | $Enums.PaymentChannel | null
+  }
+
   export type NestedEnumTransactionTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.TransactionType | EnumTransactionTypeFieldRefInput<$PrismaModel>
     in?: $Enums.TransactionType[] | ListEnumTransactionTypeFieldRefInput<$PrismaModel>
@@ -11432,6 +15224,119 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTransactionTypeFilter<$PrismaModel>
     _max?: NestedEnumTransactionTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPaymentChannelNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentChannel | EnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    in?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumPaymentChannelNullableWithAggregatesFilter<$PrismaModel> | $Enums.PaymentChannel | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumPaymentChannelNullableFilter<$PrismaModel>
+    _max?: NestedEnumPaymentChannelNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumMerchantTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.MerchantType | EnumMerchantTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MerchantType[] | ListEnumMerchantTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MerchantType[] | ListEnumMerchantTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMerchantTypeFilter<$PrismaModel> | $Enums.MerchantType
+  }
+
+  export type NestedEnumTransactionFrequencyNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransactionFrequency | EnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransactionFrequency[] | ListEnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransactionFrequency[] | ListEnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransactionFrequencyNullableFilter<$PrismaModel> | $Enums.TransactionFrequency | null
+  }
+
+  export type NestedEnumMerchantTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MerchantType | EnumMerchantTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MerchantType[] | ListEnumMerchantTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MerchantType[] | ListEnumMerchantTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMerchantTypeWithAggregatesFilter<$PrismaModel> | $Enums.MerchantType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMerchantTypeFilter<$PrismaModel>
+    _max?: NestedEnumMerchantTypeFilter<$PrismaModel>
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedEnumTransactionFrequencyNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransactionFrequency | EnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransactionFrequency[] | ListEnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransactionFrequency[] | ListEnumTransactionFrequencyFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransactionFrequencyNullableWithAggregatesFilter<$PrismaModel> | $Enums.TransactionFrequency | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTransactionFrequencyNullableFilter<$PrismaModel>
+    _max?: NestedEnumTransactionFrequencyNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumMatchMethodFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchMethod | EnumMatchMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchMethod[] | ListEnumMatchMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchMethod[] | ListEnumMatchMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchMethodFilter<$PrismaModel> | $Enums.MatchMethod
+  }
+
+  export type NestedEnumPaymentChannelFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentChannel | EnumPaymentChannelFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentChannelFilter<$PrismaModel> | $Enums.PaymentChannel
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedEnumMatchMethodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MatchMethod | EnumMatchMethodFieldRefInput<$PrismaModel>
+    in?: $Enums.MatchMethod[] | ListEnumMatchMethodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MatchMethod[] | ListEnumMatchMethodFieldRefInput<$PrismaModel>
+    not?: NestedEnumMatchMethodWithAggregatesFilter<$PrismaModel> | $Enums.MatchMethod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMatchMethodFilter<$PrismaModel>
+    _max?: NestedEnumMatchMethodFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPaymentChannelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PaymentChannel | EnumPaymentChannelFieldRefInput<$PrismaModel>
+    in?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PaymentChannel[] | ListEnumPaymentChannelFieldRefInput<$PrismaModel>
+    not?: NestedEnumPaymentChannelWithAggregatesFilter<$PrismaModel> | $Enums.PaymentChannel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPaymentChannelFilter<$PrismaModel>
+    _max?: NestedEnumPaymentChannelFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -11508,9 +15413,15 @@ export namespace Prisma {
     type: $Enums.TransactionType
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
     account: AccountCreateNestedOneWithoutTransactionsInput
     statement?: StatementCreateNestedOneWithoutTransactionsInput
     category?: CategoryCreateNestedOneWithoutTransactionsInput
+    match?: TransactionMatchCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionUncheckedCreateWithoutUserInput = {
@@ -11524,6 +15435,12 @@ export namespace Prisma {
     categoryId?: string | null
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    match?: TransactionMatchUncheckedCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionCreateOrConnectWithoutUserInput = {
@@ -11659,6 +15576,11 @@ export namespace Prisma {
     categoryId?: StringNullableFilter<"Transaction"> | string | null
     currency?: EnumCurrencyFilter<"Transaction"> | $Enums.Currency
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
+    paymentChannel?: EnumPaymentChannelNullableFilter<"Transaction"> | $Enums.PaymentChannel | null
+    merchantName?: StringNullableFilter<"Transaction"> | string | null
+    mpesaPaybill?: StringNullableFilter<"Transaction"> | string | null
+    mpesaTill?: StringNullableFilter<"Transaction"> | string | null
+    mpesaReference?: StringNullableFilter<"Transaction"> | string | null
   }
 
   export type BudgetUpsertWithWhereUniqueWithoutUserInput = {
@@ -11726,9 +15648,15 @@ export namespace Prisma {
     type: $Enums.TransactionType
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
     user: UserCreateNestedOneWithoutTransactionsInput
     statement?: StatementCreateNestedOneWithoutTransactionsInput
     category?: CategoryCreateNestedOneWithoutTransactionsInput
+    match?: TransactionMatchCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionUncheckedCreateWithoutAccountInput = {
@@ -11742,6 +15670,12 @@ export namespace Prisma {
     categoryId?: string | null
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    match?: TransactionMatchUncheckedCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionCreateOrConnectWithoutAccountInput = {
@@ -11915,9 +15849,15 @@ export namespace Prisma {
     type: $Enums.TransactionType
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
     user: UserCreateNestedOneWithoutTransactionsInput
     account: AccountCreateNestedOneWithoutTransactionsInput
     category?: CategoryCreateNestedOneWithoutTransactionsInput
+    match?: TransactionMatchCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionUncheckedCreateWithoutStatementInput = {
@@ -11931,6 +15871,12 @@ export namespace Prisma {
     categoryId?: string | null
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    match?: TransactionMatchUncheckedCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionCreateOrConnectWithoutStatementInput = {
@@ -12037,9 +15983,15 @@ export namespace Prisma {
     type: $Enums.TransactionType
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
     user: UserCreateNestedOneWithoutTransactionsInput
     account: AccountCreateNestedOneWithoutTransactionsInput
     statement?: StatementCreateNestedOneWithoutTransactionsInput
+    match?: TransactionMatchCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionUncheckedCreateWithoutCategoryInput = {
@@ -12053,6 +16005,12 @@ export namespace Prisma {
     type: $Enums.TransactionType
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    match?: TransactionMatchUncheckedCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionCreateOrConnectWithoutCategoryInput = {
@@ -12082,6 +16040,56 @@ export namespace Prisma {
 
   export type BudgetCategoryCreateManyCategoryInputEnvelope = {
     data: BudgetCategoryCreateManyCategoryInput | BudgetCategoryCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MerchantRuleCreateWithoutCategoryInput = {
+    id?: string
+    name: string
+    merchantType: $Enums.MerchantType
+    paymentChannels?: MerchantRuleCreatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleCreatepatternsInput | string[]
+    keywords?: MerchantRuleCreatekeywordsInput | string[]
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    confidence: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    matches?: TransactionMatchCreateNestedManyWithoutRuleInput
+  }
+
+  export type MerchantRuleUncheckedCreateWithoutCategoryInput = {
+    id?: string
+    name: string
+    merchantType: $Enums.MerchantType
+    paymentChannels?: MerchantRuleCreatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleCreatepatternsInput | string[]
+    keywords?: MerchantRuleCreatekeywordsInput | string[]
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    confidence: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    matches?: TransactionMatchUncheckedCreateNestedManyWithoutRuleInput
+  }
+
+  export type MerchantRuleCreateOrConnectWithoutCategoryInput = {
+    where: MerchantRuleWhereUniqueInput
+    create: XOR<MerchantRuleCreateWithoutCategoryInput, MerchantRuleUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type MerchantRuleCreateManyCategoryInputEnvelope = {
+    data: MerchantRuleCreateManyCategoryInput | MerchantRuleCreateManyCategoryInput[]
     skipDuplicates?: boolean
   }
 
@@ -12124,6 +16132,45 @@ export namespace Prisma {
     budgetId?: StringFilter<"BudgetCategory"> | string
     categoryId?: StringFilter<"BudgetCategory"> | string
     amount?: DecimalFilter<"BudgetCategory"> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type MerchantRuleUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: MerchantRuleWhereUniqueInput
+    update: XOR<MerchantRuleUpdateWithoutCategoryInput, MerchantRuleUncheckedUpdateWithoutCategoryInput>
+    create: XOR<MerchantRuleCreateWithoutCategoryInput, MerchantRuleUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type MerchantRuleUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: MerchantRuleWhereUniqueInput
+    data: XOR<MerchantRuleUpdateWithoutCategoryInput, MerchantRuleUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type MerchantRuleUpdateManyWithWhereWithoutCategoryInput = {
+    where: MerchantRuleScalarWhereInput
+    data: XOR<MerchantRuleUpdateManyMutationInput, MerchantRuleUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type MerchantRuleScalarWhereInput = {
+    AND?: MerchantRuleScalarWhereInput | MerchantRuleScalarWhereInput[]
+    OR?: MerchantRuleScalarWhereInput[]
+    NOT?: MerchantRuleScalarWhereInput | MerchantRuleScalarWhereInput[]
+    id?: StringFilter<"MerchantRule"> | string
+    name?: StringFilter<"MerchantRule"> | string
+    merchantType?: EnumMerchantTypeFilter<"MerchantRule"> | $Enums.MerchantType
+    paymentChannels?: StringNullableListFilter<"MerchantRule">
+    patterns?: StringNullableListFilter<"MerchantRule">
+    keywords?: StringNullableListFilter<"MerchantRule">
+    mpesaPaybill?: StringNullableFilter<"MerchantRule"> | string | null
+    mpesaTill?: StringNullableFilter<"MerchantRule"> | string | null
+    mpesaReference?: StringNullableFilter<"MerchantRule"> | string | null
+    categoryId?: StringFilter<"MerchantRule"> | string
+    confidence?: DecimalFilter<"MerchantRule"> | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFilter<"MerchantRule"> | boolean
+    amountPatterns?: JsonNullableFilter<"MerchantRule">
+    frequency?: EnumTransactionFrequencyNullableFilter<"MerchantRule"> | $Enums.TransactionFrequency | null
+    metadata?: JsonNullableFilter<"MerchantRule">
+    createdAt?: DateTimeFilter<"MerchantRule"> | Date | string
+    updatedAt?: DateTimeFilter<"MerchantRule"> | Date | string
   }
 
   export type UserCreateWithoutTransactionsInput = {
@@ -12215,6 +16262,7 @@ export namespace Prisma {
     type?: $Enums.CategoryType
     keywords?: string | null
     budgetCategory?: BudgetCategoryCreateNestedManyWithoutCategoryInput
+    merchantRules?: MerchantRuleCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutTransactionsInput = {
@@ -12223,11 +16271,47 @@ export namespace Prisma {
     type?: $Enums.CategoryType
     keywords?: string | null
     budgetCategory?: BudgetCategoryUncheckedCreateNestedManyWithoutCategoryInput
+    merchantRules?: MerchantRuleUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryCreateOrConnectWithoutTransactionsInput = {
     where: CategoryWhereUniqueInput
     create: XOR<CategoryCreateWithoutTransactionsInput, CategoryUncheckedCreateWithoutTransactionsInput>
+  }
+
+  export type TransactionMatchCreateWithoutTransactionInput = {
+    id?: string
+    confidence: Decimal | DecimalJsLike | number | string
+    matchMethod: $Enums.MatchMethod
+    paymentChannel: $Enums.PaymentChannel
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    wasCorrect?: boolean | null
+    correctedCategoryId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    rule?: MerchantRuleCreateNestedOneWithoutMatchesInput
+  }
+
+  export type TransactionMatchUncheckedCreateWithoutTransactionInput = {
+    id?: string
+    ruleId?: string | null
+    confidence: Decimal | DecimalJsLike | number | string
+    matchMethod: $Enums.MatchMethod
+    paymentChannel: $Enums.PaymentChannel
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    wasCorrect?: boolean | null
+    correctedCategoryId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type TransactionMatchCreateOrConnectWithoutTransactionInput = {
+    where: TransactionMatchWhereUniqueInput
+    create: XOR<TransactionMatchCreateWithoutTransactionInput, TransactionMatchUncheckedCreateWithoutTransactionInput>
   }
 
   export type UserUpsertWithoutTransactionsInput = {
@@ -12348,6 +16432,7 @@ export namespace Prisma {
     type?: EnumCategoryTypeFieldUpdateOperationsInput | $Enums.CategoryType
     keywords?: NullableStringFieldUpdateOperationsInput | string | null
     budgetCategory?: BudgetCategoryUpdateManyWithoutCategoryNestedInput
+    merchantRules?: MerchantRuleUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutTransactionsInput = {
@@ -12356,6 +16441,48 @@ export namespace Prisma {
     type?: EnumCategoryTypeFieldUpdateOperationsInput | $Enums.CategoryType
     keywords?: NullableStringFieldUpdateOperationsInput | string | null
     budgetCategory?: BudgetCategoryUncheckedUpdateManyWithoutCategoryNestedInput
+    merchantRules?: MerchantRuleUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type TransactionMatchUpsertWithoutTransactionInput = {
+    update: XOR<TransactionMatchUpdateWithoutTransactionInput, TransactionMatchUncheckedUpdateWithoutTransactionInput>
+    create: XOR<TransactionMatchCreateWithoutTransactionInput, TransactionMatchUncheckedCreateWithoutTransactionInput>
+    where?: TransactionMatchWhereInput
+  }
+
+  export type TransactionMatchUpdateToOneWithWhereWithoutTransactionInput = {
+    where?: TransactionMatchWhereInput
+    data: XOR<TransactionMatchUpdateWithoutTransactionInput, TransactionMatchUncheckedUpdateWithoutTransactionInput>
+  }
+
+  export type TransactionMatchUpdateWithoutTransactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFieldUpdateOperationsInput | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    wasCorrect?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    correctedCategoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rule?: MerchantRuleUpdateOneWithoutMatchesNestedInput
+  }
+
+  export type TransactionMatchUncheckedUpdateWithoutTransactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ruleId?: NullableStringFieldUpdateOperationsInput | string | null
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFieldUpdateOperationsInput | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    wasCorrect?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    correctedCategoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCreateWithoutBudgetsInput = {
@@ -12487,6 +16614,7 @@ export namespace Prisma {
     type?: $Enums.CategoryType
     keywords?: string | null
     transactions?: TransactionCreateNestedManyWithoutCategoryInput
+    merchantRules?: MerchantRuleCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutBudgetCategoryInput = {
@@ -12495,6 +16623,7 @@ export namespace Prisma {
     type?: $Enums.CategoryType
     keywords?: string | null
     transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
+    merchantRules?: MerchantRuleUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryCreateOrConnectWithoutBudgetCategoryInput = {
@@ -12552,6 +16681,7 @@ export namespace Prisma {
     type?: EnumCategoryTypeFieldUpdateOperationsInput | $Enums.CategoryType
     keywords?: NullableStringFieldUpdateOperationsInput | string | null
     transactions?: TransactionUpdateManyWithoutCategoryNestedInput
+    merchantRules?: MerchantRuleUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutBudgetCategoryInput = {
@@ -12560,6 +16690,322 @@ export namespace Prisma {
     type?: EnumCategoryTypeFieldUpdateOperationsInput | $Enums.CategoryType
     keywords?: NullableStringFieldUpdateOperationsInput | string | null
     transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
+    merchantRules?: MerchantRuleUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryCreateWithoutMerchantRulesInput = {
+    id?: string
+    name: string
+    type?: $Enums.CategoryType
+    keywords?: string | null
+    transactions?: TransactionCreateNestedManyWithoutCategoryInput
+    budgetCategory?: BudgetCategoryCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUncheckedCreateWithoutMerchantRulesInput = {
+    id?: string
+    name: string
+    type?: $Enums.CategoryType
+    keywords?: string | null
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
+    budgetCategory?: BudgetCategoryUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryCreateOrConnectWithoutMerchantRulesInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutMerchantRulesInput, CategoryUncheckedCreateWithoutMerchantRulesInput>
+  }
+
+  export type TransactionMatchCreateWithoutRuleInput = {
+    id?: string
+    confidence: Decimal | DecimalJsLike | number | string
+    matchMethod: $Enums.MatchMethod
+    paymentChannel: $Enums.PaymentChannel
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    wasCorrect?: boolean | null
+    correctedCategoryId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    transaction: TransactionCreateNestedOneWithoutMatchInput
+  }
+
+  export type TransactionMatchUncheckedCreateWithoutRuleInput = {
+    id?: string
+    transactionId: string
+    confidence: Decimal | DecimalJsLike | number | string
+    matchMethod: $Enums.MatchMethod
+    paymentChannel: $Enums.PaymentChannel
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    wasCorrect?: boolean | null
+    correctedCategoryId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type TransactionMatchCreateOrConnectWithoutRuleInput = {
+    where: TransactionMatchWhereUniqueInput
+    create: XOR<TransactionMatchCreateWithoutRuleInput, TransactionMatchUncheckedCreateWithoutRuleInput>
+  }
+
+  export type TransactionMatchCreateManyRuleInputEnvelope = {
+    data: TransactionMatchCreateManyRuleInput | TransactionMatchCreateManyRuleInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CategoryUpsertWithoutMerchantRulesInput = {
+    update: XOR<CategoryUpdateWithoutMerchantRulesInput, CategoryUncheckedUpdateWithoutMerchantRulesInput>
+    create: XOR<CategoryCreateWithoutMerchantRulesInput, CategoryUncheckedCreateWithoutMerchantRulesInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutMerchantRulesInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutMerchantRulesInput, CategoryUncheckedUpdateWithoutMerchantRulesInput>
+  }
+
+  export type CategoryUpdateWithoutMerchantRulesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCategoryTypeFieldUpdateOperationsInput | $Enums.CategoryType
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
+    budgetCategory?: BudgetCategoryUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutMerchantRulesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: EnumCategoryTypeFieldUpdateOperationsInput | $Enums.CategoryType
+    keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
+    budgetCategory?: BudgetCategoryUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type TransactionMatchUpsertWithWhereUniqueWithoutRuleInput = {
+    where: TransactionMatchWhereUniqueInput
+    update: XOR<TransactionMatchUpdateWithoutRuleInput, TransactionMatchUncheckedUpdateWithoutRuleInput>
+    create: XOR<TransactionMatchCreateWithoutRuleInput, TransactionMatchUncheckedCreateWithoutRuleInput>
+  }
+
+  export type TransactionMatchUpdateWithWhereUniqueWithoutRuleInput = {
+    where: TransactionMatchWhereUniqueInput
+    data: XOR<TransactionMatchUpdateWithoutRuleInput, TransactionMatchUncheckedUpdateWithoutRuleInput>
+  }
+
+  export type TransactionMatchUpdateManyWithWhereWithoutRuleInput = {
+    where: TransactionMatchScalarWhereInput
+    data: XOR<TransactionMatchUpdateManyMutationInput, TransactionMatchUncheckedUpdateManyWithoutRuleInput>
+  }
+
+  export type TransactionMatchScalarWhereInput = {
+    AND?: TransactionMatchScalarWhereInput | TransactionMatchScalarWhereInput[]
+    OR?: TransactionMatchScalarWhereInput[]
+    NOT?: TransactionMatchScalarWhereInput | TransactionMatchScalarWhereInput[]
+    id?: StringFilter<"TransactionMatch"> | string
+    transactionId?: StringFilter<"TransactionMatch"> | string
+    ruleId?: StringNullableFilter<"TransactionMatch"> | string | null
+    confidence?: DecimalFilter<"TransactionMatch"> | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFilter<"TransactionMatch"> | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFilter<"TransactionMatch"> | $Enums.PaymentChannel
+    mpesaPaybill?: StringNullableFilter<"TransactionMatch"> | string | null
+    mpesaTill?: StringNullableFilter<"TransactionMatch"> | string | null
+    mpesaReference?: StringNullableFilter<"TransactionMatch"> | string | null
+    wasCorrect?: BoolNullableFilter<"TransactionMatch"> | boolean | null
+    correctedCategoryId?: StringNullableFilter<"TransactionMatch"> | string | null
+    metadata?: JsonNullableFilter<"TransactionMatch">
+    createdAt?: DateTimeFilter<"TransactionMatch"> | Date | string
+  }
+
+  export type TransactionCreateWithoutMatchInput = {
+    id?: string
+    date: Date | string
+    description: string
+    amount: Decimal | DecimalJsLike | number | string
+    type: $Enums.TransactionType
+    currency: $Enums.Currency
+    createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    user: UserCreateNestedOneWithoutTransactionsInput
+    account: AccountCreateNestedOneWithoutTransactionsInput
+    statement?: StatementCreateNestedOneWithoutTransactionsInput
+    category?: CategoryCreateNestedOneWithoutTransactionsInput
+  }
+
+  export type TransactionUncheckedCreateWithoutMatchInput = {
+    id?: string
+    userId: string
+    accountId: string
+    statementId?: string | null
+    date: Date | string
+    description: string
+    amount: Decimal | DecimalJsLike | number | string
+    type: $Enums.TransactionType
+    categoryId?: string | null
+    currency: $Enums.Currency
+    createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+  }
+
+  export type TransactionCreateOrConnectWithoutMatchInput = {
+    where: TransactionWhereUniqueInput
+    create: XOR<TransactionCreateWithoutMatchInput, TransactionUncheckedCreateWithoutMatchInput>
+  }
+
+  export type MerchantRuleCreateWithoutMatchesInput = {
+    id?: string
+    name: string
+    merchantType: $Enums.MerchantType
+    paymentChannels?: MerchantRuleCreatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleCreatepatternsInput | string[]
+    keywords?: MerchantRuleCreatekeywordsInput | string[]
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    confidence: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    category: CategoryCreateNestedOneWithoutMerchantRulesInput
+  }
+
+  export type MerchantRuleUncheckedCreateWithoutMatchesInput = {
+    id?: string
+    name: string
+    merchantType: $Enums.MerchantType
+    paymentChannels?: MerchantRuleCreatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleCreatepatternsInput | string[]
+    keywords?: MerchantRuleCreatekeywordsInput | string[]
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    categoryId: string
+    confidence: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MerchantRuleCreateOrConnectWithoutMatchesInput = {
+    where: MerchantRuleWhereUniqueInput
+    create: XOR<MerchantRuleCreateWithoutMatchesInput, MerchantRuleUncheckedCreateWithoutMatchesInput>
+  }
+
+  export type TransactionUpsertWithoutMatchInput = {
+    update: XOR<TransactionUpdateWithoutMatchInput, TransactionUncheckedUpdateWithoutMatchInput>
+    create: XOR<TransactionCreateWithoutMatchInput, TransactionUncheckedCreateWithoutMatchInput>
+    where?: TransactionWhereInput
+  }
+
+  export type TransactionUpdateToOneWithWhereWithoutMatchInput = {
+    where?: TransactionWhereInput
+    data: XOR<TransactionUpdateWithoutMatchInput, TransactionUncheckedUpdateWithoutMatchInput>
+  }
+
+  export type TransactionUpdateWithoutMatchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+    currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
+    account?: AccountUpdateOneRequiredWithoutTransactionsNestedInput
+    statement?: StatementUpdateOneWithoutTransactionsNestedInput
+    category?: CategoryUpdateOneWithoutTransactionsNestedInput
+  }
+
+  export type TransactionUncheckedUpdateWithoutMatchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    accountId?: StringFieldUpdateOperationsInput | string
+    statementId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MerchantRuleUpsertWithoutMatchesInput = {
+    update: XOR<MerchantRuleUpdateWithoutMatchesInput, MerchantRuleUncheckedUpdateWithoutMatchesInput>
+    create: XOR<MerchantRuleCreateWithoutMatchesInput, MerchantRuleUncheckedCreateWithoutMatchesInput>
+    where?: MerchantRuleWhereInput
+  }
+
+  export type MerchantRuleUpdateToOneWithWhereWithoutMatchesInput = {
+    where?: MerchantRuleWhereInput
+    data: XOR<MerchantRuleUpdateWithoutMatchesInput, MerchantRuleUncheckedUpdateWithoutMatchesInput>
+  }
+
+  export type MerchantRuleUpdateWithoutMatchesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    merchantType?: EnumMerchantTypeFieldUpdateOperationsInput | $Enums.MerchantType
+    paymentChannels?: MerchantRuleUpdatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleUpdatepatternsInput | string[]
+    keywords?: MerchantRuleUpdatekeywordsInput | string[]
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: NullableEnumTransactionFrequencyFieldUpdateOperationsInput | $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: CategoryUpdateOneRequiredWithoutMerchantRulesNestedInput
+  }
+
+  export type MerchantRuleUncheckedUpdateWithoutMatchesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    merchantType?: EnumMerchantTypeFieldUpdateOperationsInput | $Enums.MerchantType
+    paymentChannels?: MerchantRuleUpdatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleUpdatepatternsInput | string[]
+    keywords?: MerchantRuleUpdatekeywordsInput | string[]
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: StringFieldUpdateOperationsInput | string
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: NullableEnumTransactionFrequencyFieldUpdateOperationsInput | $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AccountCreateManyUserInput = {
@@ -12593,6 +17039,11 @@ export namespace Prisma {
     categoryId?: string | null
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
   }
 
   export type BudgetCreateManyUserInput = {
@@ -12679,9 +17130,15 @@ export namespace Prisma {
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
     account?: AccountUpdateOneRequiredWithoutTransactionsNestedInput
     statement?: StatementUpdateOneWithoutTransactionsNestedInput
     category?: CategoryUpdateOneWithoutTransactionsNestedInput
+    match?: TransactionMatchUpdateOneWithoutTransactionNestedInput
   }
 
   export type TransactionUncheckedUpdateWithoutUserInput = {
@@ -12695,6 +17152,12 @@ export namespace Prisma {
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    match?: TransactionMatchUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
   export type TransactionUncheckedUpdateManyWithoutUserInput = {
@@ -12708,6 +17171,11 @@ export namespace Prisma {
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BudgetUpdateWithoutUserInput = {
@@ -12753,6 +17221,11 @@ export namespace Prisma {
     categoryId?: string | null
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
   }
 
   export type StatementCreateManyAccountInput = {
@@ -12772,9 +17245,15 @@ export namespace Prisma {
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     statement?: StatementUpdateOneWithoutTransactionsNestedInput
     category?: CategoryUpdateOneWithoutTransactionsNestedInput
+    match?: TransactionMatchUpdateOneWithoutTransactionNestedInput
   }
 
   export type TransactionUncheckedUpdateWithoutAccountInput = {
@@ -12788,6 +17267,12 @@ export namespace Prisma {
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    match?: TransactionMatchUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
   export type TransactionUncheckedUpdateManyWithoutAccountInput = {
@@ -12801,6 +17286,11 @@ export namespace Prisma {
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StatementUpdateWithoutAccountInput = {
@@ -12843,6 +17333,11 @@ export namespace Prisma {
     categoryId?: string | null
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
   }
 
   export type TransactionUpdateWithoutStatementInput = {
@@ -12853,9 +17348,15 @@ export namespace Prisma {
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     account?: AccountUpdateOneRequiredWithoutTransactionsNestedInput
     category?: CategoryUpdateOneWithoutTransactionsNestedInput
+    match?: TransactionMatchUpdateOneWithoutTransactionNestedInput
   }
 
   export type TransactionUncheckedUpdateWithoutStatementInput = {
@@ -12869,6 +17370,12 @@ export namespace Prisma {
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    match?: TransactionMatchUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
   export type TransactionUncheckedUpdateManyWithoutStatementInput = {
@@ -12882,6 +17389,11 @@ export namespace Prisma {
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TransactionCreateManyCategoryInput = {
@@ -12895,11 +17407,35 @@ export namespace Prisma {
     type: $Enums.TransactionType
     currency: $Enums.Currency
     createdAt?: Date | string
+    paymentChannel?: $Enums.PaymentChannel | null
+    merchantName?: string | null
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
   }
 
   export type BudgetCategoryCreateManyCategoryInput = {
     budgetId: string
     amount: Decimal | DecimalJsLike | number | string
+  }
+
+  export type MerchantRuleCreateManyCategoryInput = {
+    id?: string
+    name: string
+    merchantType: $Enums.MerchantType
+    paymentChannels?: MerchantRuleCreatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleCreatepatternsInput | string[]
+    keywords?: MerchantRuleCreatekeywordsInput | string[]
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    confidence: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TransactionUpdateWithoutCategoryInput = {
@@ -12910,9 +17446,15 @@ export namespace Prisma {
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     account?: AccountUpdateOneRequiredWithoutTransactionsNestedInput
     statement?: StatementUpdateOneWithoutTransactionsNestedInput
+    match?: TransactionMatchUpdateOneWithoutTransactionNestedInput
   }
 
   export type TransactionUncheckedUpdateWithoutCategoryInput = {
@@ -12926,6 +17468,12 @@ export namespace Prisma {
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    match?: TransactionMatchUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
   export type TransactionUncheckedUpdateManyWithoutCategoryInput = {
@@ -12939,6 +17487,11 @@ export namespace Prisma {
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    paymentChannel?: NullableEnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel | null
+    merchantName?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BudgetCategoryUpdateWithoutCategoryInput = {
@@ -12954,6 +17507,65 @@ export namespace Prisma {
   export type BudgetCategoryUncheckedUpdateManyWithoutCategoryInput = {
     budgetId?: StringFieldUpdateOperationsInput | string
     amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  }
+
+  export type MerchantRuleUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    merchantType?: EnumMerchantTypeFieldUpdateOperationsInput | $Enums.MerchantType
+    paymentChannels?: MerchantRuleUpdatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleUpdatepatternsInput | string[]
+    keywords?: MerchantRuleUpdatekeywordsInput | string[]
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: NullableEnumTransactionFrequencyFieldUpdateOperationsInput | $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    matches?: TransactionMatchUpdateManyWithoutRuleNestedInput
+  }
+
+  export type MerchantRuleUncheckedUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    merchantType?: EnumMerchantTypeFieldUpdateOperationsInput | $Enums.MerchantType
+    paymentChannels?: MerchantRuleUpdatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleUpdatepatternsInput | string[]
+    keywords?: MerchantRuleUpdatekeywordsInput | string[]
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: NullableEnumTransactionFrequencyFieldUpdateOperationsInput | $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    matches?: TransactionMatchUncheckedUpdateManyWithoutRuleNestedInput
+  }
+
+  export type MerchantRuleUncheckedUpdateManyWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    merchantType?: EnumMerchantTypeFieldUpdateOperationsInput | $Enums.MerchantType
+    paymentChannels?: MerchantRuleUpdatepaymentChannelsInput | string[]
+    patterns?: MerchantRuleUpdatepatternsInput | string[]
+    keywords?: MerchantRuleUpdatekeywordsInput | string[]
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    amountPatterns?: NullableJsonNullValueInput | InputJsonValue
+    frequency?: NullableEnumTransactionFrequencyFieldUpdateOperationsInput | $Enums.TransactionFrequency | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BudgetCategoryCreateManyBudgetInput = {
@@ -12974,6 +17586,66 @@ export namespace Prisma {
   export type BudgetCategoryUncheckedUpdateManyWithoutBudgetInput = {
     categoryId?: StringFieldUpdateOperationsInput | string
     amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  }
+
+  export type TransactionMatchCreateManyRuleInput = {
+    id?: string
+    transactionId: string
+    confidence: Decimal | DecimalJsLike | number | string
+    matchMethod: $Enums.MatchMethod
+    paymentChannel: $Enums.PaymentChannel
+    mpesaPaybill?: string | null
+    mpesaTill?: string | null
+    mpesaReference?: string | null
+    wasCorrect?: boolean | null
+    correctedCategoryId?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type TransactionMatchUpdateWithoutRuleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFieldUpdateOperationsInput | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    wasCorrect?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    correctedCategoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transaction?: TransactionUpdateOneRequiredWithoutMatchNestedInput
+  }
+
+  export type TransactionMatchUncheckedUpdateWithoutRuleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transactionId?: StringFieldUpdateOperationsInput | string
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFieldUpdateOperationsInput | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    wasCorrect?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    correctedCategoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransactionMatchUncheckedUpdateManyWithoutRuleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    transactionId?: StringFieldUpdateOperationsInput | string
+    confidence?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    matchMethod?: EnumMatchMethodFieldUpdateOperationsInput | $Enums.MatchMethod
+    paymentChannel?: EnumPaymentChannelFieldUpdateOperationsInput | $Enums.PaymentChannel
+    mpesaPaybill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaTill?: NullableStringFieldUpdateOperationsInput | string | null
+    mpesaReference?: NullableStringFieldUpdateOperationsInput | string | null
+    wasCorrect?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    correctedCategoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
@@ -13002,6 +17674,10 @@ export namespace Prisma {
      */
     export type BudgetCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BudgetCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use MerchantRuleCountOutputTypeDefaultArgs instead
+     */
+    export type MerchantRuleCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MerchantRuleCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use UserDefaultArgs instead
      */
     export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
@@ -13029,6 +17705,14 @@ export namespace Prisma {
      * @deprecated Use BudgetCategoryDefaultArgs instead
      */
     export type BudgetCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BudgetCategoryDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MerchantRuleDefaultArgs instead
+     */
+    export type MerchantRuleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MerchantRuleDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TransactionMatchDefaultArgs instead
+     */
+    export type TransactionMatchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TransactionMatchDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

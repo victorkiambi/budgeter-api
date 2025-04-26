@@ -170,7 +170,12 @@ exports.Prisma.TransactionScalarFieldEnum = {
   type: 'type',
   categoryId: 'categoryId',
   currency: 'currency',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  paymentChannel: 'paymentChannel',
+  merchantName: 'merchantName',
+  mpesaPaybill: 'mpesaPaybill',
+  mpesaTill: 'mpesaTill',
+  mpesaReference: 'mpesaReference'
 };
 
 exports.Prisma.BudgetScalarFieldEnum = {
@@ -190,9 +195,50 @@ exports.Prisma.BudgetCategoryScalarFieldEnum = {
   amount: 'amount'
 };
 
+exports.Prisma.MerchantRuleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  merchantType: 'merchantType',
+  paymentChannels: 'paymentChannels',
+  patterns: 'patterns',
+  keywords: 'keywords',
+  mpesaPaybill: 'mpesaPaybill',
+  mpesaTill: 'mpesaTill',
+  mpesaReference: 'mpesaReference',
+  categoryId: 'categoryId',
+  confidence: 'confidence',
+  isActive: 'isActive',
+  amountPatterns: 'amountPatterns',
+  frequency: 'frequency',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TransactionMatchScalarFieldEnum = {
+  id: 'id',
+  transactionId: 'transactionId',
+  ruleId: 'ruleId',
+  confidence: 'confidence',
+  matchMethod: 'matchMethod',
+  paymentChannel: 'paymentChannel',
+  mpesaPaybill: 'mpesaPaybill',
+  mpesaTill: 'mpesaTill',
+  mpesaReference: 'mpesaReference',
+  wasCorrect: 'wasCorrect',
+  correctedCategoryId: 'correctedCategoryId',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -203,6 +249,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.AccountType = exports.$Enums.AccountType = {
   CHECKING: 'CHECKING',
@@ -236,6 +288,51 @@ exports.TransactionType = exports.$Enums.TransactionType = {
   transfer: 'transfer'
 };
 
+exports.PaymentChannel = exports.$Enums.PaymentChannel = {
+  MPESA: 'MPESA',
+  BANK_TRANSFER: 'BANK_TRANSFER',
+  CARD_PAYMENT: 'CARD_PAYMENT',
+  CASH: 'CASH',
+  CHEQUE: 'CHEQUE',
+  MOBILE_BANKING: 'MOBILE_BANKING',
+  AGENCY_BANKING: 'AGENCY_BANKING'
+};
+
+exports.MerchantType = exports.$Enums.MerchantType = {
+  MPESA_PAYBILL: 'MPESA_PAYBILL',
+  MPESA_TILL: 'MPESA_TILL',
+  MPESA_SEND: 'MPESA_SEND',
+  BANK: 'BANK',
+  RETAIL: 'RETAIL',
+  UTILITY: 'UTILITY',
+  TELCO: 'TELCO',
+  GOVERNMENT: 'GOVERNMENT',
+  EDUCATION: 'EDUCATION',
+  TRANSPORT: 'TRANSPORT',
+  FOOD_BEVERAGE: 'FOOD_BEVERAGE',
+  GENERAL: 'GENERAL'
+};
+
+exports.TransactionFrequency = exports.$Enums.TransactionFrequency = {
+  DAILY: 'DAILY',
+  WEEKLY: 'WEEKLY',
+  MONTHLY: 'MONTHLY',
+  QUARTERLY: 'QUARTERLY',
+  ANNUAL: 'ANNUAL',
+  IRREGULAR: 'IRREGULAR'
+};
+
+exports.MatchMethod = exports.$Enums.MatchMethod = {
+  EXACT_MATCH: 'EXACT_MATCH',
+  PATTERN_MATCH: 'PATTERN_MATCH',
+  KEYWORD_MATCH: 'KEYWORD_MATCH',
+  MPESA_PAYBILL: 'MPESA_PAYBILL',
+  MPESA_TILL: 'MPESA_TILL',
+  AMOUNT_PATTERN: 'AMOUNT_PATTERN',
+  MANUAL: 'MANUAL',
+  FALLBACK: 'FALLBACK'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
@@ -243,7 +340,9 @@ exports.Prisma.ModelName = {
   Category: 'Category',
   Transaction: 'Transaction',
   Budget: 'Budget',
-  BudgetCategory: 'BudgetCategory'
+  BudgetCategory: 'BudgetCategory',
+  MerchantRule: 'MerchantRule',
+  TransactionMatch: 'TransactionMatch'
 };
 
 /**

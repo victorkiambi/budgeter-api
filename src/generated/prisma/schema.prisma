@@ -69,26 +69,33 @@ model Category {
   keywords       String?
   transactions   Transaction[]
   budgetCategory BudgetCategory[]
+  merchantRules  MerchantRule[]
 
   @@index([name])
 }
 
 model Transaction {
-  id          String          @id @default(uuid())
-  userId      String
-  accountId   String
-  statementId String?
-  date        DateTime
-  description String          @db.Text
-  amount      Decimal         @db.Decimal(15, 2)
-  type        TransactionType
-  categoryId  String?
-  currency    Currency
-  createdAt   DateTime        @default(now())
-  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  account     Account         @relation(fields: [accountId], references: [id], onDelete: Cascade)
-  statement   Statement?      @relation(fields: [statementId], references: [id], onDelete: SetNull)
-  category    Category?       @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  id             String            @id @default(uuid())
+  userId         String
+  accountId      String
+  statementId    String?
+  date           DateTime
+  description    String            @db.Text
+  amount         Decimal           @db.Decimal(15, 2)
+  type           TransactionType
+  categoryId     String?
+  currency       Currency
+  createdAt      DateTime          @default(now())
+  user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account        Account           @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  statement      Statement?        @relation(fields: [statementId], references: [id], onDelete: SetNull)
+  category       Category?         @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  paymentChannel PaymentChannel?
+  merchantName   String? // Normalized merchant name
+  mpesaPaybill   String? // Store paybill if present
+  mpesaTill      String? // Store till if present
+  mpesaReference String? // Store reference if present
+  match          TransactionMatch?
 
   @@index([userId])
   @@index([accountId])
@@ -96,6 +103,9 @@ model Transaction {
   @@index([categoryId])
   @@index([statementId])
   @@index([currency])
+  @@index([paymentChannel])
+  @@index([mpesaPaybill])
+  @@index([mpesaTill])
 }
 
 model Budget {
@@ -155,4 +165,120 @@ enum Currency {
   EUR
   GBP
   KES
+}
+
+// New enums for Kenyan-specific patterns
+enum PaymentChannel {
+  MPESA
+  BANK_TRANSFER
+  CARD_PAYMENT
+  CASH
+  CHEQUE
+  MOBILE_BANKING
+  AGENCY_BANKING
+}
+
+enum MerchantType {
+  MPESA_PAYBILL
+  MPESA_TILL
+  MPESA_SEND
+  BANK
+  RETAIL
+  UTILITY
+  TELCO
+  GOVERNMENT
+  EDUCATION
+  TRANSPORT
+  FOOD_BEVERAGE
+  GENERAL
+}
+
+enum TransactionFrequency {
+  DAILY
+  WEEKLY
+  MONTHLY
+  QUARTERLY
+  ANNUAL
+  IRREGULAR
+}
+
+enum MatchMethod {
+  EXACT_MATCH
+  PATTERN_MATCH
+  KEYWORD_MATCH
+  MPESA_PAYBILL
+  MPESA_TILL
+  AMOUNT_PATTERN
+  MANUAL
+  FALLBACK
+}
+
+// Main rule model for merchant matching
+model MerchantRule {
+  id              String       @id @default(uuid())
+  name            String // Display name
+  merchantType    MerchantType
+  paymentChannels String[] // Array of PaymentChannel enum values
+
+  // Pattern matching fields
+  patterns String[] // Array of regex patterns
+  keywords String[] // Keywords for fuzzy matching
+
+  // M-PESA specific fields
+  mpesaPaybill   String? // e.g. "888880" for KPLC
+  mpesaTill      String? // e.g. "123456" for a shop
+  mpesaReference String? // Common account/reference patterns
+
+  // Categorization
+  categoryId String
+  confidence Decimal @db.Decimal(4, 3)
+  isActive   Boolean @default(true)
+
+  // Transaction patterns
+  amountPatterns Json? // Typical amounts/ranges
+  frequency      TransactionFrequency?
+
+  // Metadata and relations
+  metadata  Json?
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+  category  Category           @relation(fields: [categoryId], references: [id])
+  matches   TransactionMatch[]
+
+  @@index([merchantType])
+  @@index([mpesaPaybill])
+  @@index([mpesaTill])
+}
+
+// Store match history and learning data
+model TransactionMatch {
+  id            String  @id @default(uuid())
+  transactionId String
+  ruleId        String?
+
+  // Match details
+  confidence     Decimal        @db.Decimal(4, 3)
+  matchMethod    MatchMethod
+  paymentChannel PaymentChannel
+
+  // M-PESA specific fields
+  mpesaPaybill   String?
+  mpesaTill      String?
+  mpesaReference String?
+
+  // For learning and improvement
+  wasCorrect          Boolean? // User verification
+  correctedCategoryId String? // If user changed category
+
+  // Metadata
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  // Relations
+  transaction Transaction   @relation(fields: [transactionId], references: [id])
+  rule        MerchantRule? @relation(fields: [ruleId], references: [id])
+
+  @@unique([transactionId])
+  @@index([mpesaPaybill])
+  @@index([mpesaTill])
 }
